@@ -1,0 +1,16 @@
+<section class="sec {{ faqClass }}" id="faq" aria-labelledby="faq-h">
+<div class="container">
+<div class="sec-head"><h2 id="faq-h">{{ faqHeading or "Questions parents usually ask." }}</h2></div>
+<div class="faq">
+{% for item in faq %}
+<details{% if loop.first %} open{% endif %}>
+<summary>{{ item.q }}</summary>
+<div class="a">{{ item.a | safe }}</div>
+</details>
+{% endfor %}
+</div>
+{% if faqMore %}
+<p class="faq-more"><a href="{{ faqMore }}">More questions answered →</a></p>
+{% endif %}
+</div>
+</section>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ page.url | absolute(site.url) }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.businessName }}">
+<meta property="og:title" content="{{ ogTitle or title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ page.url | absolute(site.url) }}">
+{# Only emitted once a real share image exists — a broken og:image is worse than none. #}
+{% if site.ogImage %}<meta property="og:image" content="{{ site.ogImage | absolute(site.url) }}">
+<meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+{% if site.appleTouchIcon %}<link rel="apple-touch-icon" href="{{ site.appleTouchIcon }}">{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{# One variable family carries the whole site. The slnt range is what makes
+   Google serve a real oblique rather than a synthetic skew; the ROND axis
+   cannot be pinned here — it 200s but serves identical glyphs — so roundness
+   is set from font-variation-settings in ptot.css instead. #}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wght@6..144,-10..0,400..700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="/assets/css/ptot.css?v={{ buildId }}">
+
+{% include "schema.njk" %}
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+{% if site.availability.accepting %}
+<div class="bar">Currently accepting new families in {{ site.baseTown }} &amp; {{ site.region }}</div>
+{% endif %}
+
+{% include "nav.njk" %}
+
+<main id="main">
+{{ content | safe }}
+</main>
+
+{% include "footer.njk" %}
+
+{% if not hideStickyCta %}
+<div class="sticky-cta">
+<a class="btn" href="{{ site.bookingUrl or '/contact/' }}">Book a free intro call</a>
+</div>
+{% endif %}
+
+<script src="/assets/js/nav.js" defer></script>
+{% if hasShapes %}<script src="/assets/js/hero-shapes.js" defer></script>{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+---
+layout: base.njk
+permalink: /in-home-ot/
+title: "In-Home Pediatric OT in Port Townsend & East Jefferson County"
+breadcrumb: "In-home occupational therapy"
+description: "Occupational therapy that comes to you — in your home or out in the community across Port Townsend and East Jefferson County. Why real settings beat a clinic."
+faqHeading: "Questions about home visits."
+faqClass: "sec-alt tint-yellow"
+faq:
+  - q: "Does my house need to be tidy?"
+    a: "<p>No, and I mean that. I've worked in a lot of homes. A house with young children in it looks like a house with young children in it, and if anything, seeing it as it actually is on a Tuesday afternoon is more useful to me than seeing it staged.</p><p>If having someone in your home feels like too much right now, we can meet somewhere in the community instead. That's a legitimate choice and not a compromise.</p>"
+  - q: "Do I need to be there? Do I need to take part?"
+    a: "Yes to being there, and mostly yes to taking part. My background is in parent coaching, and the honest reason home visits work is that you're the one there for the other 167 hours in the week. Sessions are built so that what happens in them carries on after I leave. That said, what participation looks like flexes — some weeks you're on the floor with us, some weeks you're watching from the kitchen because you need twenty minutes."
+  - q: "Can you come to daycare, preschool, or school instead?"
+    a: "Often, yes — with the program's agreement. I can also join your child during community activities like a gymnastics class or swim lessons where the provider is happy to have me along. If a program charges extra for me to take part, that cost sits with the family. For working with a childcare setting itself rather than one child, see <a href=\"/for-providers/\">consulting for providers and programs</a>."
+  - q: "What about siblings, pets, and general chaos?"
+    a: "All fine, and all information. Siblings are often part of the picture rather than a distraction from it — how your children play together may be exactly what we're working on. If a dog needs to be somewhere else for a session to work, we'll figure that out."
+  - q: "How far do you travel?"
+    a: "Port Townsend and East Jefferson County — the full list is above. Travel radius and any mileage policy: <span class=\"todo-inline\">[travel radius / mileage policy]</span>. If you're near the edge of the area, ask — it's usually workable."
+---
+
+{% from "shape.njk" import shape %}
+
+<div class="page-head">
+{{ shape('blob', 'yellow', 'md', 'tr') }}
+<div class="container">
+<h1>Therapy that happens where your child's life happens.</h1>
+<p class="lede">I don't have a clinic. I work in your home and out in the community, because that's where the skills actually need to work.</p>
+</div>
+</div>
+
+<section class="sec sec-tight" aria-labelledby="why-h">
+<div class="container split">
+<div class="split-head"><h2 id="why-h">Why not a clinic room?</h2></div>
+<div class="split-body">
+<p class="big">Clinic-based therapy has real advantages — specialized equipment, a controlled space, no distractions. For some children and some goals, it's the right choice, and I'll say so if it's yours.</p>
+<p>But most of what families come to me about is not a clinic problem. It's a getting-dressed problem, a dinner-table problem, a can't-cope-with-the-supermarket problem. A child can do something beautifully in a quiet room with a therapist and still not be able to do it at 7am in their own kitchen with a sibling shouting and shoes to find.</p>
+<p>Working in the actual environment skips that translation step. We're not practicing for real life; we're in it.</p>
+</div>
+</div>
+</section>
+
+<section class="sec sec-alt tint-green" aria-labelledby="means-h">
+<div class="container">
+<div class="sec-head"><h2 id="means-h">What that means in practice.</h2></div>
+<div class="grid2">
+<div class="card">
+<h3>We work with your actual things.</h3>
+<p>Your kitchen chair, your child's own cup, the coat that always causes trouble, the bathroom that's too echoey. Adaptations get tested on the real object in the real room, not on a version of it.</p>
+</div>
+<div class="card">
+<h3>We work at the time it's hard.</h3>
+<p>If mornings are the problem, a morning session tells us more than any amount of describing it afterward. Same for mealtimes, bath time, and the end-of-day unravelling.</p>
+</div>
+<div class="card">
+<h3>You're in the room.</h3>
+<p>There's no waiting area, so there's no handover where the useful part gets summarized into two sentences at the door. You see what I'm doing and why, and we adjust it together.</p>
+</div>
+<div class="card">
+<h3>The setup gets to change.</h3>
+<p>Home safety and environmental set-up are part of the work — where things are stored, what a child can reach, how a space is lit and organized. That's difficult to advise on from a clinic and obvious from a living room floor.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="where-h">
+<div class="container split even">
+<div class="split-head"><h2 id="where-h">Where we might meet.</h2></div>
+<div class="split-body">
+<ul class="plain-list">
+<li><b>Your home</b> — the default, and where most of the work happens.</li>
+<li><b>Out in the community</b> — the park, the beach, the library, a store. Wherever the activity you're working toward actually takes place.</li>
+<li><b>Alongside a regular activity</b> — a gymnastics class, swim lessons, an after-school program — whenever the provider is happy to have me along. Any additional cost for me to take part is covered by the family.</li>
+<li><b>Childcare, preschool, or school</b> — with the program's agreement.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="area-h">
+<div class="container split even">
+<div class="split-head">
+<h2 id="area-h">The area I cover.</h2>
+<p>Based in {{ site.baseTown }}, working across {{ site.region }}:</p>
+<ul class="town-list">
+{% for town in site.serviceArea %}<li>{{ town }}</li>{% endfor %}
+</ul>
+<p class="small-note">If you're just outside this, ask anyway — it's often workable.</p>
+</div>
+<div class="split-body">
+<figure class="area-map">
+{% include "service-map.njk" %}
+<figcaption>Coastline data © <a href="https://www.openstreetmap.org/copyright" rel="nofollow">OpenStreetMap</a> contributors</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+{% include "faq.njk" %}
+
+{% include "cta.njk" %}

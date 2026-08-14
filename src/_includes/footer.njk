@@ -1,0 +1,38 @@
+{% from "shape.njk" import shape %}
+<footer>
+{# Yellow, not green: the shape has to read against the dark surface, and it
+   picks the credential strip's colour back up at the foot of the page. #}
+{{ shape('blob', 'yellow', 'md', 'gutter-r') }}
+<div class="fwrap">
+
+<div class="fintro">
+<p class="fname">{{ site.name }}</p>
+<p class="frole">Pediatric occupational therapy, in your home and out in the community.</p>
+</div>
+
+<div class="fcols">
+<div>
+<h2 class="flbl">For families</h2>
+<ul>{% for item in nav.footerFamilies %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}</ul>
+</div>
+<div>
+<h2 class="flbl">More</h2>
+<ul>{% for item in nav.footerMore %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}</ul>
+</div>
+<div>
+<h2 class="flbl">Get in touch</h2>
+<ul class="fcontact">
+<li><span class="k">Email</span> {% if '[' in site.email %}<span class="todo-inline">{{ site.email }}</span>{% else %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</li>
+<li><span class="k">Phone</span> {% if site.phoneHref %}<a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>{% else %}<span class="todo-inline">{{ site.phone }}</span>{% endif %}</li>
+<li><span class="k">Area</span> {{ site.baseTown }} &amp; {{ site.region }}, {{ site.state }}</li>
+</ul>
+</div>
+</div>
+
+<div class="base">
+<span>© {{ site.yearFounded }} {{ site.businessName }} · {{ site.shortName }}</span>
+<span>{{ site.positioning }}</span>
+</div>
+
+</div>
+</footer>

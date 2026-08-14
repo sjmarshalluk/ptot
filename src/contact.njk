@@ -1,0 +1,139 @@
+---
+layout: base.njk
+permalink: /contact/
+title: "Contact & Book an Intro Call — Pediatric OT, Port Townsend"
+breadcrumb: "Contact"
+description: "Book a free 15-minute intro call with Julia Comstock-Ross, pediatric occupational therapist in Port Townsend and East Jefferson County. No referral or diagnosis needed."
+hideStickyCta: true
+---
+
+{% from "shape.njk" import shape %}
+
+<div class="page-head">
+{{ shape('blob', 'pink', 'md', 'tr') }}
+<div class="container">
+<h1>Start with a conversation.</h1>
+<p class="lede">A free {{ site.introCall.minutes }}-minute call, no obligation. You tell me what's going on, and I'll tell you honestly whether I think I can help.</p>
+</div>
+</div>
+
+<section class="sec sec-tight" aria-labelledby="ways-h">
+<div class="container">
+<h2 id="ways-h" class="vh">Ways to get in touch</h2>
+<div class="contact-grid">
+
+<div class="contact-card">
+<h3>Book a call directly</h3>
+{% if site.bookingUrl %}
+<p>Pick a time that suits you — no back and forth.</p>
+<a class="btn" href="{{ site.bookingUrl }}">See available times</a>
+{% else %}
+<p class="todo-inline">[Scheduling link to be added — Calendly, Acuity, Jane or SimplePractice. Until then, families use the form or the direct details below.]</p>
+{% endif %}
+</div>
+
+<div class="contact-card">
+<h3>Email</h3>
+{% if '[' in site.email %}
+<p class="todo-inline">{{ site.email }}</p>
+{% else %}
+<p><a class="lnk" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+{% endif %}
+<p class="small-note">Usually the easiest if you'd rather write things down than say them out loud the first time.</p>
+</div>
+
+<div class="contact-card">
+<h3>Phone</h3>
+{% if site.phoneHref %}
+<p><a class="lnk" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
+{% else %}
+<p class="todo-inline">{{ site.phone }}</p>
+{% endif %}
+<p class="small-note">If I don't pick up I'm in a session — leave a message and I'll call back.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="sec sec-alt tint-blue" aria-labelledby="form-h">
+<div class="container split">
+<div class="split-head">
+<h2 id="form-h">Or send a message.</h2>
+<p class="form-intro">Nothing here is required except a way to reach you. Share as much or as little as you like — we can cover the rest on the call.</p>
+</div>
+<div class="split-body form-col">
+
+<form class="cform" method="POST" action="[form endpoint]" novalidate>
+<p class="todo-inline form-todo">[Form endpoint not yet set. This form will not submit until it points at a real handler — see TODO.md. Options: Formspree, Netlify Forms, or the scheduling tool's own intake form.]</p>
+
+<div class="f-row">
+<label for="f-name">Your name</label>
+<input type="text" id="f-name" name="name" autocomplete="name" required>
+</div>
+
+<div class="f-two">
+<div class="f-row">
+<label for="f-email">Email</label>
+<input type="email" id="f-email" name="email" autocomplete="email" required>
+</div>
+<div class="f-row">
+<label for="f-phone">Phone <span class="opt">(optional)</span></label>
+<input type="tel" id="f-phone" name="phone" autocomplete="tel">
+</div>
+</div>
+
+<div class="f-two">
+<div class="f-row">
+<label for="f-child-age">Your child's age <span class="opt">(optional)</span></label>
+<input type="text" id="f-child-age" name="child_age">
+</div>
+<div class="f-row">
+<label for="f-town">Town</label>
+<input type="text" id="f-town" name="town" autocomplete="address-level2">
+</div>
+</div>
+
+<fieldset class="f-row">
+<legend>Best way to reach you</legend>
+<div class="f-radios">
+<label><input type="radio" name="contact_pref" value="email" checked> Email</label>
+<label><input type="radio" name="contact_pref" value="phone"> Phone</label>
+<label><input type="radio" name="contact_pref" value="either"> Either</label>
+</div>
+</fieldset>
+
+<div class="f-row">
+<label for="f-msg">What's going on?</label>
+<textarea id="f-msg" name="message" rows="6" aria-describedby="f-msg-help"></textarea>
+<p class="f-help" id="f-msg-help">A sentence or two is plenty. What's hard right now, and what you'd like to be different.</p>
+</div>
+
+<div class="f-row">
+<label for="f-how">How did you hear about me? <span class="opt">(optional)</span></label>
+<input type="text" id="f-how" name="referrer">
+</div>
+
+<button class="btn" type="submit">Send message</button>
+<p class="f-privacy">What you send goes to me and nobody else. I'll reply within <span class="todo-inline">[response time]</span>.</p>
+</form>
+</div>
+</div>
+</section>
+
+<section class="sec sec-shaped" aria-labelledby="area-h">
+{{ shape('blob', 'green', 'lg', 'gutter-r', true) }}
+<div class="container narrow">
+<h2 id="area-h">Where I work.</h2>
+<p>Sessions happen in your home or out in the community across {{ site.baseTown }} and {{ site.region }}, {{ site.stateFull }}. There's no clinic to visit.</p>
+<ul class="town-list">
+{% for town in site.serviceArea %}<li>{{ town }}</li>{% endfor %}
+</ul>
+<p class="small-note">Just outside this? Ask anyway — it's often workable. <a class="lnk" href="/in-home-ot/">More about how in-home sessions work →</a></p>
+
+<div class="note-block mt">
+<h3>If you're a provider or a school</h3>
+<p>There's a page with scope, credentials, availability and referral details written for you rather than for families. <a class="lnk" href="/for-providers/">For providers and schools →</a></p>
+</div>
+</div>
+</section>

@@ -1,0 +1,54 @@
+---
+layout: base.njk
+permalink: /resources/
+title: "Resources for Families — Pediatric OT, Port Townsend"
+breadcrumb: "Resources"
+description: "Plain-language guides for parents and caregivers on occupational therapy: whether your child needs OT, school vs private OT, and what private pay actually buys you."
+# Overrides the "resources" tag set by resources.json so the index doesn't list
+# itself — but keeps the page in collections.all so it reaches the sitemap.
+tags: []
+---
+
+{% from "shape.njk" import shape %}
+
+<div class="page-head">
+{{ shape('circle', 'yellow', 'md', 'tr') }}
+<div class="container">
+<h1>Resources for families.</h1>
+<p class="lede">Plain answers to the questions that come up before anyone decides to call anyone. Useful whether or not you ever work with me.</p>
+</div>
+</div>
+
+<section class="sec sec-tight" aria-labelledby="list-h">
+<div class="container">
+<h2 id="list-h" class="vh">Guides</h2>
+<div class="res-grid">
+{% for post in collections.resources | sort(false, false, "data.order") %}
+<a class="res-card" href="{{ post.url }}">
+<h3>{{ post.data.heading or post.data.title }}</h3>
+<p>{{ post.data.standfirst }}</p>
+<span class="res-more">Read →</span>
+</a>
+{% endfor %}
+</div>
+</div>
+</section>
+
+<section class="sec sec-alt sec-tight tint-yellow" aria-labelledby="soon-h">
+<div class="container split">
+<div class="split-head"><h2 id="soon-h">Coming next</h2></div>
+<div class="split-body">
+<p>Written in roughly this order. If there's something you'd find useful that isn't here, say so — most of these started as a question somebody asked me on the phone.</p>
+<ul class="plain-list">
+<li><b>OT, PT, or speech — which does my child need?</b></li>
+<li><b>What happens at a first OT visit</b></li>
+<li><b>Sensory processing, explained without jargon</b></li>
+<li><b>Mealtimes and feeding: where to start</b></li>
+<li><b>Sensory activities you can do at home</b></li>
+<li><b>Early intervention in Jefferson County: how it works, and what happens at three</b></li>
+</ul>
+</div>
+</div>
+</section>
+
+{% include "cta.njk" %}

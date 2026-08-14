@@ -1,0 +1,20 @@
+{% from "shape.njk" import shape %}
+{# Gutter-anchored, not corner-anchored: this is the last section before the
+   footer, and a shape bleeding downward is what used to get sliced in half by
+   the boundary. These bleed sideways off the page instead. #}
+<section class="cta" id="start" aria-labelledby="cta-h">
+{{ shape('blob', 'yellow', 'lg', 'gutter-l') }}
+{{ shape('arch', 'pink', 'lg', 'gutter-r') }}
+<div class="container">
+<h2 id="cta-h">{{ ctaHeading or "The best place to start is a conversation." }}</h2>
+<p>{{ ctaBody or "Book a free 15-minute intro call — no obligation, just a chance to talk through what's going on and whether we're a good fit for each other." }}</p>
+<a class="btn" href="{{ site.bookingUrl or '/contact/' }}">Book a free intro call</a>
+<div class="btn-note">{{ site.introCall.minutes }} minutes, no obligation</div>
+<div class="lines">
+{% if '[' in site.email %}<span class="todo-inline">{{ site.email }}</span>{% else %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
+·
+{% if site.phoneHref %}<a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>{% else %}<span class="todo-inline">{{ site.phone }}</span>{% endif %}
+<span class="geo">{{ site.baseTown }} &amp; {{ site.region }} · in-home and community visits</span>
+</div>
+</div>
+</section>

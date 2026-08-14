@@ -1,0 +1,92 @@
+{
+  "_comment": "Single source of truth. Anything in [square brackets] is an unconfirmed placeholder that Julia must supply before launch — see TODO.md. Never invent a value here.",
+
+  "businessName": "Port Townsend Occupational Therapy",
+  "_businessName_note": "The practice name — the site title, the nav lockup, og:site_name and the JSON-LD MedicalBusiness name all come from here. It must stay byte-identical to the Google Business Profile listing: conflicting name signals actively reduce confidence in the listing. Confirm with Julia before launch.",
+
+  "name": "Julia Comstock-Ross",
+  "shortName": "Julia Comstock-Ross, OT",
+  "role": "Pediatric Occupational Therapist",
+  "url": "https://example.com",
+  "_url_note": "PLACEHOLDER — replace with the real domain before launch. Used for canonical, OG and sitemap URLs.",
+
+  "email": "[email address]",
+  "phone": "[phone number]",
+  "phoneHref": "",
+  "_contact_note": "phoneHref should be the tel: digits, e.g. +13605551234. Left empty until the real number exists so no broken tel link ships.",
+
+  "ogImage": null,
+  "appleTouchIcon": null,
+  "_image_note": "Both null until real assets exist. ogImage should be a 1200x630 PNG at /assets/img/og-default.png; appleTouchIcon a 180x180 PNG. A broken og:image is worse than none, so the tags are only emitted once these are set.",
+
+  "bookingUrl": "",
+  "_booking_note": "Calendly / Acuity / Jane / SimplePractice link. While empty, all CTAs route to /contact/ instead.",
+
+  "credentials": "[MOT, OTR/L]",
+  "licenseState": "Washington",
+  "licenseNumber": "[license number]",
+  "alumniOf": "University of Washington",
+
+  "availability": {
+    "accepting": true,
+    "waitTime": "[current wait time]",
+    "updated": "2026-08"
+  },
+
+  "ages": {
+    "from": "birth",
+    "to": "[upper age limit]",
+    "specialty": "birth to three"
+  },
+
+  "region": "East Jefferson County",
+  "state": "WA",
+  "stateFull": "Washington",
+  "baseTown": "Port Townsend",
+  "serviceArea": [
+    "Port Townsend",
+    "Chimacum",
+    "Port Hadlock",
+    "Irondale",
+    "Port Ludlow",
+    "Quilcene",
+    "Marrowstone Island",
+    "Nordland",
+    "Discovery Bay",
+    "Cape George"
+  ],
+  "_serviceArea_note": "UNCONFIRMED — Julia must confirm which of these she will actually drive to, and add any missing. This list feeds the JSON-LD areaServed and should match the Google Business Profile service area exactly.",
+  "travelRadius": "[travel radius / mileage policy]",
+
+  "services": [
+    {
+      "id": "individual-ot",
+      "name": "Individual occupational therapy",
+      "price": 150,
+      "unit": "hour",
+      "priceLabel": "$150 / hour"
+    },
+    {
+      "id": "family-consulting",
+      "name": "Parent & family consulting",
+      "price": 150,
+      "unit": "[session length]",
+      "priceLabel": "$150 / [session length]"
+    }
+  ],
+  "_services_note": "Consulting unit is unconfirmed — currently '$150 / session' on the live site with no duration, sitting beside '$150 / hour' for OT. Needs a real duration.",
+
+  "policies": {
+    "cancellation": "[cancellation policy]",
+    "superbills": null,
+    "_superbills_note": "UNRESOLVED BUSINESS DECISION — blocks launch. Set to true or false. A regional competitor (Home Front, Kenmore) issues superbills for out-of-network reimbursement, so families will compare. Templates read this and show the right copy; while null they show a clearly-marked placeholder."
+  },
+
+  "introCall": {
+    "minutes": 15,
+    "label": "free 15-minute intro call"
+  },
+
+  "positioning": "Neuroaffirmative · relationship-based · activity-led",
+  "yearFounded": 2026
+}

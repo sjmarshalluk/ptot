@@ -1,0 +1,21 @@
+{
+  "primary": [
+    { "url": "/what-ot-helps-with/", "label": "What OT helps with" },
+    { "url": "/in-home-ot/", "label": "How I work" },
+    { "url": "/services/", "label": "Services & fees" },
+    { "url": "/about/", "label": "About" },
+    { "url": "/for-providers/", "label": "For providers" }
+  ],
+  "footerFamilies": [
+    { "url": "/what-ot-helps-with/", "label": "What OT helps with" },
+    { "url": "/in-home-ot/", "label": "Working in your home" },
+    { "url": "/services/", "label": "Services & fees" },
+    { "url": "/what-to-expect/", "label": "What to expect" }
+  ],
+  "footerMore": [
+    { "url": "/about/", "label": "About Julia" },
+    { "url": "/for-providers/", "label": "For providers & schools" },
+    { "url": "/resources/", "label": "Resources for families" },
+    { "url": "/contact/", "label": "Contact" }
+  ]
+}

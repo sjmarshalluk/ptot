@@ -1,0 +1,228 @@
+---
+layout: base.njk
+title: "Port Townsend Occupational Therapy"
+description: "In-home pediatric occupational therapy in Port Townsend and East Jefferson County. Mealtimes, sensory processing, big feelings, play. No referral needed."
+hasShapes: true
+faqHeading: "The questions that come up first."
+faqClass: "sec-alt tint-pink"
+faqMore: "/what-to-expect/#faq"
+faq:
+  - q: "Does my child need a diagnosis or a referral?"
+    a: "No. If something is making daily life harder, that's enough to start with. You don't need a diagnosis, a referral, or a waiting list place — just a conversation."
+  - q: "Do you take insurance?"
+    a: "I'm a private-pay practice, at $150 an hour. That means no diagnosis requirement, no cap on sessions, no waiting on authorizations, and no pressure to fit your child into a billing category. It also means the cost sits with your family rather than an insurer, which is a real trade-off and worth talking through on the intro call."
+  - q: "What ages do you work with?"
+    a: "Much of my background is with babies and toddlers, birth to three, and that's where I'm most specialized. I also work with older children on play, social skills, fine motor development and daily routines. If you're not sure whether your child is a fit, the intro call is the fastest way to find out."
+  - q: "What area do you cover?"
+    a: "Port Townsend and East Jefferson County, in your home or out in the community. <a href=\"/in-home-ot/\">More about how in-home sessions work →</a>"
+  - q: "We're already working with early intervention or the school. Does this conflict?"
+    a: "Not at all. I'm happy to work alongside what's already in place, and to coordinate with your other providers if you'd like. School-based OT is limited to what affects a child's access to education; private OT isn't, so families often do both."
+---
+
+{% from "shape.njk" import shape %}
+
+{# Three rounded shapes sitting inside the hero rather than bleeding off it —
+   two on the left, one on the right. The left pair is separated horizontally
+   rather than stacked: stacking capped them at roughly half this size, since
+   the hero is only ~600px tall and two large shapes could not clear each
+   other. Offset sideways they can both run large. #}
+<header class="hero" aria-labelledby="hero-h">
+{{ shape('arch', 'pink', 'lg', 'tl') }}
+{{ shape('circle', 'blue', 'md', 'bl') }}
+{{ shape('blob', 'green', 'lg', 'gutter-r') }}
+<div class="container">
+<h1 id="hero-h">Support that starts with your child, not a checklist.</h1>
+<p class="lede">Occupational therapy helps children take part in the things that make up their days — playing, eating, dressing, connecting, managing big feelings. I work in your home and out in the community, where real life actually happens.</p>
+<div class="hero-acts">
+<a class="btn" href="{{ site.bookingUrl or '/contact/' }}">Book a free intro call</a>
+<a class="lnk" href="/what-ot-helps-with/">Not sure if it's an OT thing? Start here</a>
+</div>
+<p class="fine">No diagnosis needed. No set packages. Start with a conversation.</p>
+</div>
+</header>
+
+{# The credentials used to sit in a yellow pill bar of their own, which read as
+   a notification banner rather than as part of the page. They now sit under the
+   heading that introduces OT — who is saying this, beside what it is — and the
+   yellow moved into the wash shape behind the column. #}
+<section class="sec intro-ot" id="what-is-ot" aria-labelledby="what-is-ot-h">
+{{ shape('blob', 'yellow', 'lg', 'gutter-r', true) }}
+<div class="container split">
+<div class="split-head">
+<h2 id="what-is-ot-h">What occupational therapy actually is.</h2>
+<ul class="cred-list">
+<li>Licensed occupational therapist, {{ site.licenseState }}</li>
+<li>Master's in OT, {{ site.alumniOf }}</li>
+<li>6+ years in pediatrics</li>
+<li>In-home &amp; community sessions</li>
+</ul>
+</div>
+<div class="split-body">
+<p class="lead">A child's "occupations" are simply the things they do all day — <span class="occ">eating, sleeping, dressing, playing, learning, being with other people</span>. Pediatric occupational therapy helps when some of those things have become hard, by working out what's getting in the way and changing either the skill, the activity, or the environment around it.</p>
+<p class="big">It isn't about jobs, and it isn't only for children with a diagnosis. Much of the time it looks like play, because for a young child play <em>is</em> the work.</p>
+</div>
+</div>
+</section>
+
+<section class="sec sec-alt tint-green" id="help" aria-labelledby="help-h">
+<div class="container">
+<div class="sec-head">
+<h2 id="help-h">“Is this even an OT thing?”</h2>
+<p>It's the question I get most. Occupational therapy looks at how a child and their environment fit together — and where that fit could be easier. If any of these sound familiar, it's worth a conversation.</p>
+</div>
+<div class="grid2">
+<div class="card">
+<span class="chip chip-red" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M23 3c11 0 20 8 20 20s-9 20-20 20S3 34 3 23 12 3 23 3Z"/></svg></span>
+<h3>Mealtimes have become a battle.</h3>
+<p>Very limited foods, distress at the table, or a child who can't seem to sit through a meal. We look at the sensory side, the seating, the routine, and the pressure — and make eating feel possible again.</p>
+</div>
+<div class="card">
+<span class="chip chip-yellow" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M23 4 43 40H3Z"/></svg></span>
+<h3>Getting dressed, bathed, or out the door takes everything you have.</h3>
+<p>We break down where the routine is actually breaking, adjust what we can, and build the specific skills underneath it — rather than pushing harder on a routine that isn't working.</p>
+</div>
+<div class="card">
+<span class="chip chip-blue" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M23 3 43 23 23 43 3 23Z"/></svg></span>
+<h3>Big feelings arrive faster than either of you can manage.</h3>
+<p>We work out what's setting things off and what your child is trying to communicate, then build tools and adjust the environment so those moments come less often and land more softly.</p>
+</div>
+<div class="card">
+<span class="chip chip-green" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M3 23c0-11 9-20 20-20s20 9 20 20v20H23C12 43 3 34 3 23Z"/></svg></span>
+<h3>Sounds, textures, clothing, or movement seem to affect your child more than most.</h3>
+<p>Sensory processing shapes a huge amount of daily life. We figure out your child's particular sensory picture and what genuinely helps them feel regulated.</p>
+</div>
+<div class="card">
+<span class="chip chip-pink" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M3 23a20 20 0 0 1 40 0 20 20 0 0 1-40 0Z"/><path class="cut" d="M21.5 3h3v40h-3Z"/></svg></span>
+<h3>You're not sure how to play together, or how to help them play with others.</h3>
+<p>For babies and toddlers especially, play is where everything else grows from. We build foundational play and communication, and — as they get older — the social skills that let them join in.</p>
+</div>
+<div class="card">
+<span class="chip chip-yellow" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M6 6h28v28H6Z"/><path class="cut" d="M14 14h20v20H14Z"/><path d="M17 17h20v20H17Z"/></svg></span>
+<h3>Small hands are struggling with everyday tools.</h3>
+<p>Fine motor development affects everything from spoons to crayons to buttons. We work on it inside real activities, not drills.</p>
+</div>
+</div>
+<div class="sec-foot">
+<a class="btn out" href="/what-ot-helps-with/">See all of this in more detail</a>
+<a class="lnk" href="{{ site.bookingUrl or '/contact/' }}">Or just book a free intro call →</a>
+</div>
+</div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="how-h">
+<div class="container">
+<div class="sec-head">
+<h2 id="how-h">Three things that shape everything I do.</h2>
+</div>
+<div class="principles">
+<div class="principle">
+<h3>Behavior is communication.</h3>
+<p>What's often called behavior is a response — to something in the environment, or something internal. My focus is understanding what set it off and what need it was trying to meet.</p>
+</div>
+<div class="principle">
+<h3>Play is the work.</h3>
+<p>Therapy centers on the activity your child actually wants support with, done in real time so we can see what's helping and what isn't. For young children, that looks a lot like play.</p>
+</div>
+<div class="principle">
+<h3>We're partners.</h3>
+<p>This is relationship-based. I work in partnership with your child and your family, and welcome everyone in as it fits. Feedback is always welcome.</p>
+</div>
+</div>
+<div class="sec-foot"><a class="lnk" href="/about/#approach">More about how I work →</a></div>
+</div>
+</section>
+
+<section class="sec sec-alt tint-blue" id="services" aria-labelledby="services-h">
+<div class="container">
+<div class="sec-head">
+<h2 id="services-h">Two ways to work together.</h2>
+<p>Both are private pay, with no package to commit to. Prices are what they say they are.</p>
+</div>
+<div class="grid2">
+<div class="svc">
+<div class="top"><h3>Individual occupational therapy</h3><div class="price">{{ site.services[0].priceLabel }}</div></div>
+<p>One-hour sessions in your home or out in the community, built around the everyday activities your child is working toward.</p>
+</div>
+<div class="svc">
+<div class="top"><h3>Parent &amp; family consulting</h3><div class="price">{{ site.services[1].priceLabel }}</div></div>
+<p>Individualized support for you, whether or not your child is taking part in OT sessions themselves — strategies, coping-skill development, and practical ways to grow participation in daily activities.</p>
+</div>
+</div>
+<div class="sec-foot">
+<a class="btn out" href="/services/">Full details and what's included</a>
+<a class="lnk" href="/for-providers/">Consulting for childcare providers and programs →</a>
+</div>
+</div>
+</section>
+
+{# Plain ground, not a band: the fit columns encode yes/no in their own green
+   and blue washes, which only read against the page. #}
+<section class="sec" id="fit" aria-labelledby="fit-h">
+<div class="container">
+<div class="sec-head">
+<h2 id="fit-h">Is this a fit for your family?</h2>
+<p>The honest version, so you can work it out before you spend anything.</p>
+</div>
+<div class="fit">
+<div class="fit-col fit-yes">
+<h3>This is probably a fit if</h3>
+<ul>
+<li>Your child is between {{ site.ages.from }} and <span class="todo-inline">{{ site.ages.to }}</span> — I'm most specialized in {{ site.ages.specialty }}</li>
+<li>You're in {{ site.baseTown }} or {{ site.region }}</li>
+<li>Something in daily life has become hard, with or without a diagnosis</li>
+<li>You want to be part of sessions rather than wait in a lobby</li>
+<li>You're waiting on an assessment, a diagnosis, or an early-intervention place and don't want to lose that time</li>
+<li>You can work with private pay, or want to talk through whether it's viable</li>
+</ul>
+</div>
+<div class="fit-col fit-no">
+<h3>You may be better served elsewhere if</h3>
+<ul>
+<li>You need therapy billed directly to insurance — a clinic that takes your plan will cost you less</li>
+<li>Your child needs specialized clinic equipment as the core of their therapy</li>
+<li>You're looking for speech or physical therapy — those are different professions, and I'm glad to point you toward local options</li>
+<li>You need a formal diagnostic evaluation; that's a different process, usually through your pediatrician</li>
+</ul>
+<p class="fit-note">If any of these are you, say so on the intro call. I'd rather send you to the right place than take you on.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec sec-alt tint-yellow" id="start-steps" aria-labelledby="start-steps-h">
+<div class="container">
+<div class="sec-head">
+<h2 id="start-steps-h">How starting actually works.</h2>
+<p>No paperwork before you've spoken to me, and nothing you can't back out of.</p>
+</div>
+<ol class="steps">
+<li><span class="n" aria-hidden="true">1</span><h3>A free {{ site.introCall.minutes }}-minute call</h3><p>You tell me what's going on. I tell you honestly whether I think OT would help and whether I'm the right person. No cost, no obligation.</p></li>
+<li><span class="n" aria-hidden="true">2</span><h3>We book a first session</h3><p>In your home, at a time that fits your family's day. I'll send a short intake form beforehand.</p></li>
+<li><span class="n" aria-hidden="true">3</span><h3>The first session</h3><p>Mostly understanding: what you need, what your child's day looks like, and setting goals together.</p></li>
+<li><span class="n" aria-hidden="true">4</span><h3>We decide the rhythm together</h3><p>Weekly, every other week, or as needed. There's no package, and you can stop whenever it stops being useful.</p></li>
+</ol>
+<div class="sec-foot"><a class="lnk" href="/what-to-expect/">What to expect, in more detail →</a></div>
+</div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="about-h">
+<div class="container about">
+<div class="portrait">
+{{ shape('diamond', 'yellow', 'sm', 'tr') }}
+<div class="img-todo" role="img" aria-label="Portrait of Julia Comstock-Ross — photo to be supplied">
+<span>Portrait of Julia<small>Photo needed — see TODO.md</small></span>
+</div>
+</div>
+<div class="bio">
+<h2 id="about-h">About Julia</h2>
+<p class="big">I'm an occupational therapist based in {{ site.baseTown }}. I've spent the last six-plus years in pediatric OT, most of it in early-support work with babies and toddlers and their families, using a parent coaching model.</p>
+<p>Before my master's in occupational therapy at the {{ site.alumniOf }}, I spent five years as a mental health counselor and pediatric behavioral specialist on the inpatient psychiatric unit at Seattle Children's Hospital. That work still shapes how I understand children, families, and behavior today.</p>
+<p class="creds"><b>Credentials:</b> <span class="todo-inline">{{ site.credentials }}</span> · Licensed occupational therapist, {{ site.licenseState }} State · {{ site.alumniOf }}</p>
+<p><a class="lnk" href="/about/">More about my background and approach →</a></p>
+</div>
+</div>
+</section>
+
+{% include "faq.njk" %}
+
+{% include "cta.njk" %}

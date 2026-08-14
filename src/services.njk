@@ -1,0 +1,106 @@
+---
+layout: base.njk
+permalink: /services/
+title: "Services & Fees — Pediatric Occupational Therapy, Port Townsend"
+breadcrumb: "Services & fees"
+description: "Pediatric occupational therapy at $150/hour and parent & family consulting, in-home across East Jefferson County. Private pay, no packages, no referral."
+faqHeading: "Questions about cost and commitment."
+faqClass: "sec-alt tint-green"
+faq:
+  - q: "Why private pay rather than insurance?"
+    a: "<p>Practically: it means no diagnosis requirement, no cap on the number of sessions, no waiting on authorizations, and no pressure to shape your child's goals to fit a billing category. It also means I can work in your home and out in the community, which many plans don't cover well.</p><p>The trade-off is real and worth saying plainly: the cost sits with your family rather than an insurer. For some families that's the reason this works, and for some it's the reason it doesn't. Either is a fine answer, and the intro call is free precisely so you can find out which before spending anything.</p>"
+  - q: "Would I get a superbill to claim back?"
+    a: "<p><span class=\"todo-inline\">[Unresolved — see TODO.md. This must be answered before launch. If superbills are offered, say so plainly here and explain what a family does with one. If not, say that too, so nobody is surprised.]</span></p>"
+  - q: "How many sessions will we need?"
+    a: "There's no set answer, and I'd be suspicious of anyone who gave you one before meeting your child. Some families come weekly for a stretch and stop. Others check in every few weeks, or come back when something changes. We decide the rhythm together after the first session and revisit it whenever it stops fitting."
+  - q: "Can I stop, or take a break?"
+    a: "Any time, and without explaining yourself. There's no package to buy and nothing to cancel out of. Families pause for holidays, for illness, for money, or because things are going well — all normal."
+  - q: "What's your cancellation policy?"
+    a: "<span class=\"todo-inline\">[cancellation policy]</span>"
+  - q: "Do you take on families outside East Jefferson County?"
+    a: "The practice is built around in-home and community sessions, so the service area is genuinely a limit rather than a preference. If you're just outside it, ask — it's often workable. Parent and family consulting is sometimes possible at more distance."
+---
+
+{% from "shape.njk" import shape %}
+
+<div class="page-head">
+{{ shape('diamond', 'blue', 'md', 'tr') }}
+<div class="container">
+<h1>Services and fees.</h1>
+<p class="lede">Private pay, published prices, no package to commit to. Everything below happens in your home or out in the community.</p>
+</div>
+</div>
+
+<section class="sec sec-tight" aria-labelledby="svc-h">
+<div class="container">
+<h2 id="svc-h" class="vh">Services</h2>
+<div class="grid2">
+
+<div class="svc">
+<div class="top"><h3>Individual occupational therapy</h3><div class="price">{{ site.services[0].priceLabel }}</div></div>
+<p>One-hour sessions built around the everyday activities your child is working toward — eating, dressing, playing, managing big feelings, joining in.</p>
+<ul>
+<li>In your home, or out in the community where the activity happens</li>
+<li>Goals set with you in the first session, and revisited as your child changes</li>
+<li>You're part of the session rather than waiting outside it</li>
+<li>I can join your child during community programs — a gymnastics class, swim lessons, an after-school activity — whenever the provider is happy to have me along</li>
+</ul>
+<p class="caveat">Any additional cost for me to take part in a community program is covered by the family.</p>
+</div>
+
+<div class="svc">
+<div class="top"><h3>Parent &amp; family consulting</h3><div class="price">{{ site.services[1].priceLabel }}</div></div>
+<p>Individualized support for you, whether or not your child is taking part in OT sessions themselves.</p>
+<ul>
+<li>Strategies for what's often called behavior — what's driving it and what need it's meeting</li>
+<li>Coping-skill development, for your child and for the adults around them</li>
+<li>Practical ways to grow participation in daily activities: dressing, showering, eating, chores</li>
+<li>Home set-up and safety</li>
+</ul>
+<p class="caveat">A genuine option when a child isn't up for sessions right now, or when the most useful change is one the adults can make.</p>
+</div>
+
+</div>
+
+<div class="note-block mt">
+<h3>Also available: consulting for childcare providers, programs and classrooms</h3>
+<p>Working with a setting rather than a single child — environment, routines, and strategies a whole room can use. <a class="lnk" href="/for-providers/">Details for providers and schools →</a></p>
+</div>
+
+</div>
+</section>
+
+<section class="sec sec-alt tint-yellow sec-shaped" aria-labelledby="incl-h">
+{{ shape('circle', 'yellow', 'lg', 'gutter-r') }}
+<div class="container narrow">
+<h2 id="incl-h">What the price includes.</h2>
+<ul class="plain-list">
+<li><b>The session itself</b>, at the agreed length.</li>
+<li><b>Travel within the service area.</b> <span class="todo-inline">[Confirm: is travel included throughout, or is there a mileage charge beyond a certain distance?]</span></li>
+<li><b>Planning and preparation</b> between sessions — thinking about your child, adapting what we're doing, sourcing or making materials.</li>
+<li><b>Coordination with your other providers</b> where you'd like it — early intervention, your school district, a speech therapist, your pediatrician.</li>
+</ul>
+<h2 class="mt">What isn't included.</h2>
+<ul class="plain-list">
+<li>Fees charged by a community program for me to attend alongside your child.</li>
+<li>Equipment or materials bought specifically for your home, if we decide something is worth having.</li>
+<li>Formal diagnostic assessment — that's a different process, usually through your pediatrician.</li>
+</ul>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="pol-h">
+<div class="container">
+<div class="sec-head"><h2 id="pol-h">Policies, plainly.</h2></div>
+<div class="policy-grid">
+<div><h3>Payment</h3><p>Private pay. <span class="todo-inline">[Accepted payment methods and when payment is due.]</span></p></div>
+<div><h3>Cancellation</h3><p><span class="todo-inline">[cancellation policy]</span></p></div>
+<div><h3>Confidentiality</h3><p>What you tell me about your family stays between us. I'll only share information with another provider — your pediatrician, your school district, a therapist — with your agreement. <span class="todo-inline">[Confirm whether a formal privacy notice / HIPAA notice is required for this practice and link it here.]</span></p></div>
+<div><h3>Records</h3><p><span class="todo-inline">[What notes are kept, what a family receives, and how to request records.]</span></p></div>
+</div>
+</div>
+</section>
+
+{% include "faq.njk" %}
+
+{% include "cta.njk" %}

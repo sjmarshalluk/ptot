@@ -1,0 +1,37 @@
+---
+layout: base.njk
+---
+{% from "shape.njk" import shape %}
+
+<div class="page-head">
+{{ shape('arch', 'blue', 'md', 'tr') }}
+<div class="container">
+<p class="crumb"><a href="/resources/">Resources</a></p>
+<h1>{{ heading or title }}</h1>
+{% if standfirst %}<p class="lede">{{ standfirst }}</p>{% endif %}
+</div>
+</div>
+
+<article class="sec sec-tight sec-shaped">
+{{ shape('blob', 'blue', 'lg', 'gutter-r', true) }}
+<div class="container">
+<div class="prose">
+{{ content | safe }}
+</div>
+</div>
+</article>
+
+<section class="sec sec-alt sec-tight tint-yellow" aria-labelledby="more-h">
+<div class="container split">
+<div class="split-head"><h2 id="more-h">More for families</h2></div>
+<div class="split-body">
+<ul class="plain-list">
+{% for post in collections.resources %}{% if post.url != page.url %}
+<li><a href="{{ post.url }}"><b>{{ post.data.heading or post.data.title }}</b></a>{% if post.data.standfirst %}<br>{{ post.data.standfirst }}{% endif %}</li>
+{% endif %}{% endfor %}
+</ul>
+</div>
+</div>
+</section>
+
+{% include "cta.njk" %}
