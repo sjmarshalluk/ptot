@@ -1,11 +1,11 @@
 ---
 layout: base.njk
 permalink: /in-home-ot/
-title: "In-Home Pediatric OT in Port Townsend & East Jefferson County"
+title: "How It Works — In-Home Pediatric OT in Port Townsend"
 breadcrumb: "In-home occupational therapy"
-description: "Occupational therapy that comes to you — in your home or out in the community across Port Townsend and East Jefferson County. Why real settings beat a clinic."
-faqHeading: "Questions about home visits."
+description: "How in-home pediatric OT works, from the free 15-minute intro call to a settled rhythm — where sessions happen across East Jefferson County, and what to expect at each step."
 faqClass: "sec-alt tint-yellow"
+_faq_note: "Two sets merged when /what-to-expect/ was absorbed: home visits, then the process."
 faq:
   - q: "Does my house need to be tidy?"
     a: "<p>No, and I mean that. I've worked in a lot of homes. A house with young children in it looks like a house with young children in it, and if anything, seeing it as it actually is on a Tuesday afternoon is more useful to me than seeing it staged.</p><p>If having someone in your home feels like too much right now, we can meet somewhere in the community instead. That's a legitimate choice and not a compromise.</p>"
@@ -17,12 +17,24 @@ faq:
     a: "All fine, and all information. Siblings are often part of the picture rather than a distraction from it — how your children play together may be exactly what we're working on. If a dog needs to be somewhere else for a session to work, we'll figure that out."
   - q: "How far do you travel?"
     a: "Port Townsend and East Jefferson County — the full list is above. Travel radius and any mileage policy: <span class=\"todo-inline\">[travel radius / mileage policy]</span>. If you're near the edge of the area, ask — it's usually workable."
+  - q: "How will I know it's working?"
+    a: "<p>We set goals together at the start in terms you'd actually recognize — not scores, but things like “gets his own shoes on before school most mornings” or “can sit with us for the first ten minutes of dinner.” Progress is measured against those.</p><p>I'll also tell you if I don't think it's working. A therapy relationship where the therapist can't say that isn't worth paying for.</p>"
+  - q: "What if my child won't engage?"
+    a: "That happens, and it's information rather than failure. A child refusing something is telling us something about the demand, the environment, or how they're feeling that day. We adjust. And if your child genuinely isn't up for sessions right now, parent and family consulting is a real option rather than a consolation prize."
+  - q: "What can I do between sessions?"
+    a: "Usually something small and specific rather than a program. The point of working in your home is that the strategies fit your actual day, so what I suggest tends to be a change to something you're already doing rather than a new thing to find time for."
+  - q: "Can I bring in my partner, a grandparent, or a nanny?"
+    a: "Please do. Whoever is part of your child's daily life is welcome, and it usually helps for more than one adult to see the same thing rather than have it relayed."
+  - q: "Do you write reports?"
+    a: "I can share a summary with your pediatrician, your school district, or another provider when you'd like me to — and I'll do that as a matter of course after an initial evaluation if a provider referred you. See <a href=\"/for-providers/\">for providers</a>."
+  - q: "What if we need to stop?"
+    a: "Then we stop. There's no package and no notice period beyond the cancellation policy. Plenty of families come for a stretch, stop, and come back when something changes."
 ---
 
 {% from "shape.njk" import shape %}
 
-<div class="page-head">
-{{ shape('blob', 'yellow', 'md', 'tr') }}
+<div class="page-head slab">
+{{ shape('blob', 'yellow', 'md', 'gutter-r') }}
 <div class="container">
 <h1>Therapy that happens where your child's life happens.</h1>
 <p class="lede">I don't have a clinic. I work in your home and out in the community, because that's where the skills actually need to work.</p>
@@ -30,13 +42,12 @@ faq:
 </div>
 
 <section class="sec sec-tight" aria-labelledby="why-h">
-<div class="container split">
-<div class="split-head"><h2 id="why-h">Why not a clinic room?</h2></div>
-<div class="split-body">
-<p class="big">Clinic-based therapy has real advantages — specialized equipment, a controlled space, no distractions. For some children and some goals, it's the right choice, and I'll say so if it's yours.</p>
+<div class="container narrow opening">
+{# See the note on /what-ot-helps-with/ — hidden, not deleted. #}
+<h2 id="why-h" class="vh">Why not a clinic room?</h2>
+<p>Clinic-based therapy has real advantages — specialized equipment, a controlled space, no distractions. For some children and some goals, it's the right choice, and I'll say so if it's yours.</p>
 <p>But most of what families come to me about is not a clinic problem. It's a getting-dressed problem, a dinner-table problem, a can't-cope-with-the-supermarket problem. A child can do something beautifully in a quiet room with a therapist and still not be able to do it at 7am in their own kitchen with a sibling shouting and shoes to find.</p>
 <p>Working in the actual environment skips that translation step. We're not practicing for real life; we're in it.</p>
-</div>
 </div>
 </section>
 
@@ -60,6 +71,80 @@ faq:
 <h3>The setup gets to change.</h3>
 <p>Home safety and environmental set-up are part of the work — where things are stored, what a child can reach, how a space is lit and organized. That's difficult to advise on from a clinic and obvious from a living room floor.</p>
 </div>
+</div>
+</div>
+</section>
+
+{# Moved here from /what-to-expect/, which this page now absorbs: the nav
+   calls this page "How I work", so the steps belong on it. That page is a
+   redirect stub now. #}
+<section class="sec sec-tight" aria-labelledby="steps-h">
+<div class="container">
+<h2 id="steps-h" class="vh">The steps</h2>
+<ol class="steps-long">
+
+<li>
+<span class="n" aria-hidden="true">1</span>
+<div>
+<h3>A free {{ site.introCall.minutes }}-minute intro call</h3>
+<p>You tell me what's going on. I ask a few questions, and then I tell you honestly whether I think occupational therapy would help and whether I'm the right person for it.</p>
+<p>Sometimes the answer is that you'd be better served by a clinic that takes your insurance, or by speech therapy rather than OT, or by waiting a few months. I'd rather say that on a free call than three sessions in.</p>
+<p class="step-note">Costs nothing. No paperwork beforehand. You can be doing something else while we talk.</p>
+</div>
+</li>
+
+<li>
+<span class="n" aria-hidden="true">2</span>
+<div>
+<h3>Booking, and a short intake form</h3>
+<p>If we both think it's a fit, we find a time that suits your family's actual day — including the difficult parts of it, if that's what we're working on.</p>
+<p>I'll send a short intake form to fill in beforehand: your child's history, what you've already tried, who else is involved, and what you're hoping for. It's there so the first session isn't spent on paperwork.</p>
+</div>
+</li>
+
+<li>
+<span class="n" aria-hidden="true">3</span>
+<div>
+<h3>The first session, in your home</h3>
+<p>Mostly understanding. We focus on what you need, and I get a feel for your child's skills through observation and through what you and your family tell me. Much of it will look like playing, talking, and following your child around.</p>
+<p>By the end we'll have set goals together — in plain terms, describing things you'd actually notice changing.</p>
+<p class="step-note">Nothing to prepare. No need to tidy. A normal-looking day is more useful than a staged one.</p>
+</div>
+</li>
+
+<li>
+<span class="n" aria-hidden="true">4</span>
+<div>
+<h3>The sessions after</h3>
+<p>Activities that work toward those goals — knowing that goals shift and evolve as your child does. If something urgent shows up that day, we can work on that instead; the plan serves your child rather than the other way around.</p>
+<p>You're in the room and part of it. What we do is designed to keep working after I've left.</p>
+</div>
+</li>
+
+<li>
+<span class="n" aria-hidden="true">5</span>
+<div>
+<h3>Finding a rhythm — and ending well</h3>
+<p>Weekly, every couple of weeks, or as needed. We agree it together and change it when it stops fitting. There's no commitment to a predetermined package of sessions.</p>
+<p>And it should end. When the goals are met, or when what's left is something your family can carry on with alone, we stop — and you can come back if something changes.</p>
+</div>
+</li>
+
+</ol>
+</div>
+</section>
+
+<section class="sec sec-alt tint-blue" aria-labelledby="bring-h">
+<div class="container split">
+<div class="split-head"><h2 id="bring-h">A few practical things.</h2></div>
+<div class="split-body">
+<ul class="plain-list">
+<li><b>How long is a session?</b> Individual OT is one hour. Consulting is <span class="todo-inline">{{ site.services[1].unit }}</span>.</li>
+<li><b>Who needs to be home?</b> At least one parent or caregiver. Siblings and pets are fine and often useful.</li>
+<li><b>What should I have ready?</b> Nothing in particular. If we're working on a specific routine, it helps to schedule the session for when that routine actually happens.</li>
+<li><b>What do you bring?</b> Whatever the goals call for. A lot of the work uses your own things on purpose, because those are the things your child has to manage after I go.</li>
+<li><b>What if we're mid-way through an assessment or waiting on early intervention?</b> That's a common place to start, and it doesn't conflict. I'm glad to coordinate with anyone else involved.</li>
+</ul>
 </div>
 </div>
 </section>

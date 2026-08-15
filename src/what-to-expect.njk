@@ -1,106 +1,26 @@
 ---
-layout: base.njk
+layout: null
 permalink: /what-to-expect/
-title: "What to Expect — Starting Pediatric OT in Port Townsend"
-breadcrumb: "What to expect"
-description: "What happens from the first phone call to the first session and beyond: the free 15-minute intro call, the first visit, how goals get set, and how often you'd meet."
-faqHeading: "The rest of the questions."
-faq:
-  - q: "How will I know it's working?"
-    a: "<p>We set goals together at the start in terms you'd actually recognize — not scores, but things like “gets his own shoes on before school most mornings” or “can sit with us for the first ten minutes of dinner.” Progress is measured against those.</p><p>I'll also tell you if I don't think it's working. A therapy relationship where the therapist can't say that isn't worth paying for.</p>"
-  - q: "What if my child won't engage?"
-    a: "That happens, and it's information rather than failure. A child refusing something is telling us something about the demand, the environment, or how they're feeling that day. We adjust. And if your child genuinely isn't up for sessions right now, parent and family consulting is a real option rather than a consolation prize."
-  - q: "What can I do between sessions?"
-    a: "Usually something small and specific rather than a program. The point of working in your home is that the strategies fit your actual day, so what I suggest tends to be a change to something you're already doing rather than a new thing to find time for."
-  - q: "Can I bring in my partner, a grandparent, or a nanny?"
-    a: "Please do. Whoever is part of your child's daily life is welcome, and it usually helps for more than one adult to see the same thing rather than have it relayed."
-  - q: "Do you write reports?"
-    a: "I can share a summary with your pediatrician, your school district, or another provider when you'd like me to — and I'll do that as a matter of course after an initial evaluation if a provider referred you. See <a href=\"/for-providers/\">for providers</a>."
-  - q: "What if we need to stop?"
-    a: "Then we stop. There's no package and no notice period beyond the cancellation policy. Plenty of families come for a stretch, stop, and come back when something changes."
+eleventyExcludeFromCollections: true
 ---
+{#
+  This page's content moved to /in-home-ot/ — the nav calls that page "How I
+  work", and describing the same journey in two places meant two things to keep
+  in sync. Kept as a stub because the URL has been published and may be linked
+  from elsewhere.
 
-{% from "shape.njk" import shape %}
-
-<div class="page-head">
-{{ shape('arch', 'blue', 'md', 'tr') }}
-<div class="container">
-<h1>What actually happens.</h1>
-<p class="lede">From the first phone call to a settled rhythm — so you know what you're agreeing to before you agree to it.</p>
-</div>
-</div>
-
-<section class="sec sec-tight" aria-labelledby="steps-h">
-<div class="container">
-<h2 id="steps-h" class="vh">The steps</h2>
-<ol class="steps-long">
-
-<li>
-<span class="n" aria-hidden="true">1</span>
-<div>
-<h3>A free {{ site.introCall.minutes }}-minute intro call</h3>
-<p>You tell me what's going on. I ask a few questions, and then I tell you honestly whether I think occupational therapy would help and whether I'm the right person for it.</p>
-<p>Sometimes the answer is that you'd be better served by a clinic that takes your insurance, or by speech therapy rather than OT, or by waiting a few months. I'd rather say that on a free call than three sessions in.</p>
-<p class="step-note">Costs nothing. No paperwork beforehand. You can be doing something else while we talk.</p>
-</div>
-</li>
-
-<li>
-<span class="n" aria-hidden="true">2</span>
-<div>
-<h3>Booking, and a short intake form</h3>
-<p>If we both think it's a fit, we find a time that suits your family's actual day — including the difficult parts of it, if that's what we're working on.</p>
-<p>I'll send a short intake form to fill in beforehand: your child's history, what you've already tried, who else is involved, and what you're hoping for. It's there so the first session isn't spent on paperwork.</p>
-</div>
-</li>
-
-<li>
-<span class="n" aria-hidden="true">3</span>
-<div>
-<h3>The first session, in your home</h3>
-<p>Mostly understanding. We focus on what you need, and I get a feel for your child's skills through observation and through what you and your family tell me. Much of it will look like playing, talking, and following your child around.</p>
-<p>By the end we'll have set goals together — in plain terms, describing things you'd actually notice changing.</p>
-<p class="step-note">Nothing to prepare. No need to tidy. A normal-looking day is more useful than a staged one.</p>
-</div>
-</li>
-
-<li>
-<span class="n" aria-hidden="true">4</span>
-<div>
-<h3>The sessions after</h3>
-<p>Activities that work toward those goals — knowing that goals shift and evolve as your child does. If something urgent shows up that day, we can work on that instead; the plan serves your child rather than the other way around.</p>
-<p>You're in the room and part of it. What we do is designed to keep working after I've left.</p>
-</div>
-</li>
-
-<li>
-<span class="n" aria-hidden="true">5</span>
-<div>
-<h3>Finding a rhythm — and ending well</h3>
-<p>Weekly, every couple of weeks, or as needed. We agree it together and change it when it stops fitting. There's no commitment to a predetermined package of sessions.</p>
-<p>And it should end. When the goals are met, or when what's left is something your family can carry on with alone, we stop — and you can come back if something changes.</p>
-</div>
-</li>
-
-</ol>
-</div>
-</section>
-
-<section class="sec sec-alt tint-blue" aria-labelledby="bring-h">
-<div class="container split">
-<div class="split-head"><h2 id="bring-h">A few practical things.</h2></div>
-<div class="split-body">
-<ul class="plain-list">
-<li><b>How long is a session?</b> Individual OT is one hour. Consulting is <span class="todo-inline">{{ site.services[1].unit }}</span>.</li>
-<li><b>Who needs to be home?</b> At least one parent or caregiver. Siblings and pets are fine and often useful.</li>
-<li><b>What should I have ready?</b> Nothing in particular. If we're working on a specific routine, it helps to schedule the session for when that routine actually happens.</li>
-<li><b>What do you bring?</b> Whatever the goals call for. A lot of the work uses your own things on purpose, because those are the things your child has to manage after I go.</li>
-<li><b>What if we're mid-way through an assessment or waiting on early intervention?</b> That's a common place to start, and it doesn't conflict. I'm glad to coordinate with anyone else involved.</li>
-</ul>
-</div>
-</div>
-</section>
-
-{% include "faq.njk" %}
-
-{% include "cta.njk" %}
+  A meta refresh is a client-side substitute for a real redirect. Configure a
+  proper 301 at the host as well — see TODO.md.
+#}<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Moved — {{ site.businessName }}</title>
+<link rel="canonical" href="{{ '/in-home-ot/' | absolute(site.url) }}">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=/in-home-ot/">
+</head>
+<body>
+<p>This page has moved to <a href="/in-home-ot/">How I work</a>.</p>
+</body>
+</html>

@@ -35,11 +35,16 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+{# Announcement and nav share one slab — the inverse of the footer: flush to
+   the top, inset from the sides, rounded on the bottom corners instead of the
+   top. It runs wider than the content shell on purpose, so it frames the page
+   rather than lining up with it. #}
+<div class="masthead">
 {% if site.availability.accepting %}
 <div class="bar">Currently accepting new families in {{ site.baseTown }} &amp; {{ site.region }}</div>
 {% endif %}
-
 {% include "nav.njk" %}
+</div>
 
 <main id="main">
 {{ content | safe }}

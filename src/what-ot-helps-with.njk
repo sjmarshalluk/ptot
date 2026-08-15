@@ -19,20 +19,22 @@ faq:
 
 {% from "shape.njk" import shape %}
 
-<div class="page-head">
-{{ shape('blob', 'green', 'md', 'tr') }}
+<div class="page-head slab">
+{{ shape('blob', 'pink', 'md', 'gutter-r') }}
 <div class="container">
 <h1>What occupational therapy helps with.</h1>
 <p class="lede">“Is this even an OT thing?” is the question I get most. Here's the fuller answer — if any of it sounds like your household, it's worth a conversation.</p>
 </div>
 </div>
 
-<section class="sec sec-tight sec-shaped" aria-labelledby="intro-h">
-{{ shape('arch', 'green', 'md', 'gutter-r', true) }}
-<div class="container narrow">
+<section class="sec sec-tight" aria-labelledby="intro-h">
+<div class="container narrow opening">
+{# Kept in the DOM but not shown: the section still needs a programmatic label
+   for aria-labelledby and the document outline, but a visible subhead here
+   would just restate the page title a few centimetres above it. #}
 <h2 id="intro-h" class="vh">In short</h2>
-<p class="big">A child's occupations are the things they do all day — eating, sleeping, dressing, playing, learning, being with other people. Occupational therapy starts by looking at how a child and their environment fit together, and where that fit could be easier.</p>
-<p class="big">That means the work isn't always about changing the child. Sometimes it's the seating, the timing, the noise, the expectation, or the way an activity is broken up. Usually it's some of each.</p>
+<p>A child's occupations are the things they do all day — eating, sleeping, dressing, playing, learning, being with other people. Occupational therapy starts by looking at how a child and their environment fit together, and where that fit could be easier.</p>
+<p>That means the work isn't always about changing the child. Sometimes it's the seating, the timing, the noise, the expectation, or the way an activity is broken up. Usually it's some of each.</p>
 </div>
 </section>
 

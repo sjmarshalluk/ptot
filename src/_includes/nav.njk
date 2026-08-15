@@ -14,8 +14,12 @@
 <li><a href="{{ item.url }}"{% if page.url == item.url %} class="on" aria-current="page"{% endif %}>{{ item.label }}</a></li>
 {% endfor %}
 </ul>
-{# Suppressed where it would point at the page you're already on. #}
+{# Where it would point at the page you're already on, it becomes an in-page
+   jump to the booking options rather than disappearing — a nav that loses a
+   button on one page reads as a rendering fault, and the action is still
+   useful once you are there. #}
 {% set ctaTarget = site.bookingUrl or '/contact/' %}
-{% if ctaTarget != page.url %}<a class="btn btn-sm" href="{{ ctaTarget }}">Book an intro call</a>{% endif %}
+{% if ctaTarget == page.url %}{% set ctaTarget = '#book' %}{% endif %}
+<a class="btn btn-sm" href="{{ ctaTarget }}">Book an intro call</a>
 </div>
 </nav>

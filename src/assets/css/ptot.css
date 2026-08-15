@@ -196,13 +196,31 @@ section,header.hero,.page-head,footer{position:relative}
 /* --------------------------------------------------------------------------
    announcement bar + nav
    -------------------------------------------------------------------------- */
-/* Positioned and stacked above the mastheads: it is the opaque edge a
-   top-anchored shape disappears behind. */
-.bar{position:relative;z-index:30;background:var(--wash-green);color:var(--ink);text-align:center;font-size:13.5px;font-weight:600;padding:11px 16px}
+/* --------------------------------------------------------------------------
+   masthead — the footer's slab, inverted
+   Same inset from the page edges and the same radius, mirrored to the bottom
+   corners. Its content runs wider than var(--shell): the bar frames the page
+   rather than aligning to the column the copy sits in.
+   -------------------------------------------------------------------------- */
+.masthead{
+  position:relative;z-index:30;
+  margin:0 var(--band-inset);
+  background:var(--wash-green);
+  border-radius:0 0 var(--radius-band) var(--radius-band);
+  overflow:hidden;
+}
+/* The availability line is the one genuinely time-sensitive thing on the page,
+   so it takes the footer's deep green against the slab's wash — a dark strip
+   reading 9.5:1, and the only place in the masthead that carries real weight.
+   The saturated brand green was tried here and lost: it sat directly above the
+   saturated green blob in the hero and read as a mismatch. */
+.bar{background:var(--surface);color:var(--on-surface);text-align:center;font-size:13.5px;font-weight:600;padding:11px var(--s4)}
+.bar a{color:var(--on-surface-strong);border-bottom-color:rgba(var(--on-surface-rgb),.45)}
+.bar a:hover{color:var(--yellow);border-color:var(--yellow)}
 .bar a{color:var(--ink);border-bottom:1px solid rgba(var(--ink-rgb),.35)}
 .bar a:hover{color:var(--link-hover);border-color:var(--link-hover)}
 
-nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding:var(--s4) var(--gutter);max-width:var(--shell);margin:0 auto;flex-wrap:wrap}
+nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding:var(--s4) var(--s6);flex-wrap:wrap}
 nav .brand{display:block;color:var(--ink)}
 /* 172px is just under the width of "Port Townsend Occupational", so the name
    breaks to two lines on its own word boundary without hardcoding the split. */
@@ -230,7 +248,7 @@ nav .brand span{display:block;font-size:16px;font-weight:600;line-height:1.2;let
 .btn:hover{background:var(--surface-deep);color:var(--on-surface-strong);transform:translateY(-1px);box-shadow:var(--shadow-lift)}
 .btn.out{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--hair-strong)}
 .btn.out:hover{background:var(--card-hi);color:var(--ink);box-shadow:inset 0 0 0 1px var(--hair-strong),var(--shadow-lift)}
-.btn-sm{padding:11px 22px;font-size:14px}
+.btn-sm{padding:11px 22px;font-size:14.5px}   /* matches the nav links */
 .btn-note{font-size:var(--fs-sm);color:var(--muted);margin-top:var(--s2)}
 .lnk{font-weight:600;font-size:15.5px;color:var(--ink);border-bottom:2px solid var(--yellow);padding-bottom:2px}
 .lnk:hover{color:var(--link-hover);border-color:var(--link-hover)}
@@ -276,6 +294,13 @@ nav .brand span{display:block;font-size:16px;font-weight:600;line-height:1.2;let
 .hero .lede{font-size:var(--fs-lede);max-width:54ch;margin:0 auto var(--s5);color:var(--ink)}
 .hero-acts{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);align-items:center;justify-content:center}
 .hero .fine{margin-top:var(--s5);font-size:var(--fs-sm);color:var(--ink);font-weight:500}
+
+/* The opening statement under a header slab: one column, one size, no visible
+   heading. The page title has just been stated in the slab, so a subhead here
+   only repeats the hierarchy — and a single size stops the top of the page
+   reading as four competing steps. */
+.opening>p{font-size:var(--fs-lede);line-height:1.6}
+.opening>p+p{margin-top:var(--s4)}
 
 /* --------------------------------------------------------------------------
    sections
@@ -327,7 +352,7 @@ h2{font-size:var(--fs-h2);letter-spacing:-.018em}
    -------------------------------------------------------------------------- */
 .intro-ot{position:relative;overflow:hidden}
 .intro-ot>.container{position:relative;z-index:1}
-.intro-ot .lead{font-size:clamp(20px,2vw,25px);line-height:1.5;margin-bottom:var(--s4)}
+.lead{font-size:clamp(20px,2vw,25px);line-height:1.5;margin-bottom:var(--s4)}
 .occ{color:var(--ink);font-weight:600}
 
 /* Credentials as four quiet facts under the heading, each tagged with a dot
@@ -468,6 +493,23 @@ h2{font-size:var(--fs-h2);letter-spacing:-.018em}
    below them — one axis for the whole page.
    -------------------------------------------------------------------------- */
 .page-head{padding:var(--s8) 0 var(--s5);min-height:calc(var(--shape-md) * 1.07 + var(--s4))}
+
+/* Two pages carry a header slab: the title continues the masthead rather than
+   starting a bare field below it — same tint, same inset, no gap, with the
+   rounding moved down to the bottom of the title block. Opt-in, because it
+   suits pages that open with a statement and not the more utilitarian ones. */
+.page-head.slab{
+  background:var(--wash-green);
+  margin:0 var(--band-inset);
+  border-radius:0 0 var(--radius-band) var(--radius-band);
+  padding:var(--s8) 0;
+  min-height:0;
+}
+body:has(.page-head.slab) .masthead{border-radius:0}
+.page-head>.container{position:relative;z-index:1}
+/* on-page inside the slab, like the hero's — not bleeding off an edge */
+.page-head .shape{translate:none}
+.page-head .shape-gutter-r{top:50%;right:var(--s7);translate:0 -50%}
 .page-head h1{font-size:var(--fs-h1);line-height:1.08;letter-spacing:-.022em;max-width:17ch}
 .page-head .lede{margin-top:var(--s4);font-size:var(--fs-lede);max-width:var(--measure);color:var(--body)}
 
@@ -500,11 +542,17 @@ h2{font-size:var(--fs-h2);letter-spacing:-.018em}
 footer{color:var(--on-surface);padding:var(--s8) var(--gutter) var(--s5);font-size:var(--fs-sm);overflow:hidden}
 footer::before{content:"";position:absolute;z-index:0;inset:0 var(--band-inset);background:var(--surface);border-radius:var(--radius-band) var(--radius-band) 0 0}
 footer .shape{right:calc(var(--band-inset) + var(--s2));translate:0 -50%}
+/* Overrides the macro's fill: a lift of the surface rather than a brand hue,
+   so footer text remains legible wherever the shape lands. */
+footer .shape svg path{fill:rgba(var(--on-surface-rgb),.09)}
 .fwrap{max-width:var(--shell);margin:0 auto;position:relative;z-index:2}
 .fintro{margin-bottom:var(--s7)}
-.fname{font-weight:600;font-size:19px;color:var(--on-surface-strong);letter-spacing:-.015em}
-.frole{font-size:var(--fs-sm);color:var(--on-surface-muted);margin-top:4px;max-width:46ch}
-.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--s6)}
+.fname{font-weight:600;font-size:19px;color:var(--on-surface-strong);letter-spacing:-.015em;line-height:1.25}
+.frole{font-size:var(--fs-sm);color:var(--on-surface-muted);margin-top:var(--s2);max-width:46ch}
+/* Three fixed 20% columns packed to the left, rather than fractions stretched
+   across the full width — the link lists read as short lists, not as a row
+   spanning the page. */
+.fcols{display:grid;grid-template-columns:repeat(3,20%);gap:var(--s6);justify-content:start}
 .flbl{color:var(--on-surface-muted);margin-bottom:var(--s3)}
 .fcols ul{list-style:none}
 .fcols li{margin-bottom:10px;font-size:15.5px}
@@ -642,19 +690,13 @@ footer .todo-inline{color:var(--on-surface-muted)}
   .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
 }
 
-@media(max-width:1020px){
-  :root{--gutter:40px;--band-inset:20px}
-  .steps{grid-template-columns:1fr 1fr}
-  .fact-grid{grid-template-columns:1fr 1fr}
-  .contact-grid,.res-grid{grid-template-columns:1fr}
-  .principles{grid-template-columns:1fr 1fr;gap:var(--s6)}
-  .split{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s4) var(--s6)}
+/* The nav needs 1056px on a single row — a long wordmark, five links and a
+   CTA pill. That runs out well before the page layout does, so it collapses on
+   its own breakpoint rather than waiting for the 900px one. */
+@media(max-width:1280px){
+  nav .brand span{max-width:170px}
 }
-@media(max-width:900px){
-  :root{--gutter:24px;--radius-band:32px;--shape-inset:24px;--band-inset:12px}
-  nav{padding:var(--s3) var(--gutter)}
-  /* The open menu sits over the masthead's shapes, so it needs a ground. */
-  body.nav-open nav{background:var(--bg)}
+@media(max-width:1120px){
   .nav-toggle{display:inline-flex}
   .nav-panel{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid var(--hair);margin-top:var(--s3);padding-top:var(--s1)}
   body.nav-open .nav-panel{display:flex}
@@ -663,6 +705,20 @@ footer .todo-inline{color:var(--on-surface-muted)}
   .nav-panel li a{display:block;padding:14px 2px;font-size:16px}
   .nav-panel a.on{border-bottom:0;font-weight:600}
   .nav-panel .btn{margin:var(--s3) 0 6px}
+}
+
+@media(max-width:1020px){
+  :root{--gutter:40px;--band-inset:20px}
+  .steps{grid-template-columns:1fr 1fr}
+  .fact-grid{grid-template-columns:1fr 1fr}
+  .contact-grid,.res-grid{grid-template-columns:1fr}
+  .fcols{grid-template-columns:repeat(3,minmax(0,28%))}
+  .principles{grid-template-columns:1fr 1fr;gap:var(--s6)}
+  .split{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s4) var(--s6)}
+}
+@media(max-width:900px){
+  :root{--gutter:24px;--radius-band:32px;--shape-inset:24px;--band-inset:12px}
+  nav{padding:var(--s3) var(--gutter)}
   .about{grid-template-columns:1fr;gap:var(--s6)}
   /* Stacked, the map would otherwise run the full width and cost most of
      a screen in height for what is a supporting graphic. */
@@ -670,7 +726,7 @@ footer .todo-inline{color:var(--on-surface-muted)}
   .portrait .shape{translate:-30% -30%}
   .principles,.grid2,.fit{grid-template-columns:1fr}
   .card.wide{grid-column:auto}
-  .fcols{grid-template-columns:1fr;gap:var(--s5)}
+  .fcols{grid-template-columns:1fr;gap:var(--s5);justify-content:stretch}
   /* The split collapses, but the shapes stay: below this width is where most
      parents will see the site, and it is the only place the brand lives. */
   .split{display:block}

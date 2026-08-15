@@ -24,6 +24,7 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 | 9 | **Upper age limit** | `site.json` → `ages.to` | A parent of an eight-year-old currently cannot tell whether this practice is for them. |
 | 10 | **Cancellation policy** | `site.json` → `policies.cancellation` | Referenced on `/services/`. |
 | 11 | **Confirm the practice name** | `site.json` → `businessName` | Currently `Port Townsend Occupational Therapy`. It is now the nav lockup, the home-page `<title>`, `og:site_name` and the JSON-LD `MedicalBusiness.name`. It must end up **byte-identical** to the Google Business Profile listing — conflicting name signals actively reduce confidence in the listing, which is the same reason no street address is published. Julia has to confirm this is the name she's registering under. |
+| 12 | **A real 301 for `/what-to-expect/`** | host config — `_redirects` (Netlify), `vercel.json`, or server rules | That page was absorbed into `/in-home-ot/`; the URL now serves a stub with a canonical, `noindex,follow` and a meta refresh. That is a client-side substitute. Search engines pass authority properly only through a server 301, and the URL has been published. |
 
 ---
 

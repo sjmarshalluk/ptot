@@ -1,12 +1,15 @@
 {% from "shape.njk" import shape %}
 <footer>
-{# Yellow, not green: the shape has to read against the dark surface, and it
-   picks the credential strip's colour back up at the foot of the page. #}
+{# Tonal, not a brand colour: the footer columns are fixed-width and packed
+   left, so how much room is left beside them changes with the viewport and the
+   shape ends up under the last column at some widths. A lighter tint of the
+   surface itself can sit behind text at any width without touching contrast —
+   see the fill override in ptot.css. #}
 {{ shape('blob', 'yellow', 'md', 'gutter-r') }}
 <div class="fwrap">
 
 <div class="fintro">
-<p class="fname">{{ site.name }}</p>
+<p class="fname">{{ site.businessName }}</p>
 <p class="frole">Pediatric occupational therapy, in your home and out in the community.</p>
 </div>
 

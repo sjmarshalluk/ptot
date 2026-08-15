@@ -8,9 +8,8 @@
   ],
   "footerFamilies": [
     { "url": "/what-ot-helps-with/", "label": "What OT helps with" },
-    { "url": "/in-home-ot/", "label": "Working in your home" },
-    { "url": "/services/", "label": "Services & fees" },
-    { "url": "/what-to-expect/", "label": "What to expect" }
+    { "url": "/in-home-ot/", "label": "How I work" },
+    { "url": "/services/", "label": "Services & fees" }
   ],
   "footerMore": [
     { "url": "/about/", "label": "About Julia" },

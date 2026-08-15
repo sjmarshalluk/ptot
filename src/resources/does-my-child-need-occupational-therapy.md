@@ -81,4 +81,4 @@ If you're in Port Townsend or East Jefferson County, [book a free fifteen-minute
 
 Elsewhere, your pediatrician is a reasonable starting point — and if your child is under three, your state's early intervention program can evaluate at no cost to you.
 
-You can also read [what OT helps with](/what-ot-helps-with/) in more detail, or [what actually happens](/what-to-expect/) if you start.
+You can also read [what OT helps with](/what-ot-helps-with/) in more detail, or [what actually happens](/in-home-ot/) if you start.
