@@ -74,7 +74,7 @@ Plenty of families do both, at different times.
 
 **Superbills**, if your provider offers them, let you claim against out-of-network benefits. You pay the therapist, then submit the itemized receipt to your insurer yourself. What you get back — if anything — depends on your plan's out-of-network coverage and deductible. It's worth calling your insurer and asking specifically about out-of-network occupational therapy before assuming either way.
 
-<span class="todo-inline">[Julia to confirm whether this practice issues superbills, and state it plainly here.]</span>
+*This practice issues superbills on request.* You pay for the session, I give you the itemized receipt with the codes your insurer needs, and you submit it. What comes back depends on your plan.
 
 **Consulting instead of direct therapy.** Parent and family consulting is often the higher-value option, particularly for young children, because it changes what happens across the whole week rather than one hour of it. Sometimes it's also fewer sessions.
 

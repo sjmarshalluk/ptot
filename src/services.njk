@@ -10,13 +10,13 @@ faq:
   - q: "Why private pay rather than insurance?"
     a: "<p>Practically: it means no diagnosis requirement, no cap on the number of sessions, no waiting on authorizations, and no pressure to shape your child's goals to fit a billing category. It also means I can work in your home and out in the community, which many plans don't cover well.</p><p>The trade-off is real and worth saying plainly: the cost sits with your family rather than an insurer. For some families that's the reason this works, and for some it's the reason it doesn't. Either is a fine answer, and the intro call is free precisely so you can find out which before spending anything.</p>"
   - q: "Would I get a superbill to claim back?"
-    a: "<p><span class=\"todo-inline\">[Unresolved — see TODO.md. This must be answered before launch. If superbills are offered, say so plainly here and explain what a family does with one. If not, say that too, so nobody is surprised.]</span></p>"
+    a: "<p>Yes, on request. A superbill is an itemized receipt with the codes an insurer needs. You pay me for the session, then submit the superbill to your insurer yourself and claim against your out-of-network benefits.</p><p>What comes back depends entirely on your plan — some families are reimbursed a good portion, some nothing at all. It is worth calling your insurer before you start and asking specifically about out-of-network occupational therapy, and about your out-of-network deductible. I can't promise a reimbursement, only the paperwork to ask for one.</p>"
   - q: "How many sessions will we need?"
     a: "There's no set answer, and I'd be suspicious of anyone who gave you one before meeting your child. Some families come weekly for a stretch and stop. Others check in every few weeks, or come back when something changes. We decide the rhythm together after the first session and revisit it whenever it stops fitting."
   - q: "Can I stop, or take a break?"
     a: "Any time, and without explaining yourself. There's no package to buy and nothing to cancel out of. Families pause for holidays, for illness, for money, or because things are going well — all normal."
   - q: "What's your cancellation policy?"
-    a: "<span class=\"todo-inline\">[cancellation policy]</span>"
+    a: "Sessions need to be cancelled at least 24 hours in advance. Inside 24 hours the full session fee is due — the time is held for your child and can't usually be filled at short notice. Life happens, though, so talk to me rather than assuming the worst."
   - q: "Do you take on families outside East Jefferson County?"
     a: "The practice is built around in-home and community sessions, so the service area is genuinely a limit rather than a preference. If you're just outside it, ask — it's often workable. Parent and family consulting is sometimes possible at more distance."
 ---
@@ -50,7 +50,7 @@ faq:
 
 <div class="svc">
 <div class="top"><h3>Parent &amp; family consulting</h3><div class="price">{{ site.services[1].priceLabel }}</div></div>
-<p>Individualized support for you, whether or not your child is taking part in OT sessions themselves.</p>
+<p>Individualized support for you, whether or not your child is taking part in OT sessions themselves. Billed hourly, and a consult can run longer than an hour where that's what the conversation needs.</p>
 <ul>
 <li>Strategies for what's often called behavior — what's driving it and what need it's meeting</li>
 <li>Coping-skill development, for your child and for the adults around them</li>
@@ -76,7 +76,7 @@ faq:
 <h2 id="incl-h">What the price includes.</h2>
 <ul class="plain-list">
 <li><b>The session itself</b>, at the agreed length.</li>
-<li><b>Travel within the service area.</b> <span class="todo-inline">[Confirm: is travel included throughout, or is there a mileage charge beyond a certain distance?]</span></li>
+<li><b>Travel within the service area.</b> There's no additional mileage charge — what you see is what you pay, wherever in the area you are.</li>
 <li><b>Planning and preparation</b> between sessions — thinking about your child, adapting what we're doing, sourcing or making materials.</li>
 <li><b>Coordination with your other providers</b> where you'd like it — early intervention, your school district, a speech therapist, your pediatrician.</li>
 </ul>
@@ -93,10 +93,9 @@ faq:
 <div class="container">
 <div class="sec-head"><h2 id="pol-h">Policies, plainly.</h2></div>
 <div class="policy-grid">
-<div><h3>Payment</h3><p>Private pay. <span class="todo-inline">[Accepted payment methods and when payment is due.]</span></p></div>
-<div><h3>Cancellation</h3><p><span class="todo-inline">[cancellation policy]</span></p></div>
-<div><h3>Confidentiality</h3><p>What you tell me about your family stays between us. I'll only share information with another provider — your pediatrician, your school district, a therapist — with your agreement. <span class="todo-inline">[Confirm whether a formal privacy notice / HIPAA notice is required for this practice and link it here.]</span></p></div>
-<div><h3>Records</h3><p><span class="todo-inline">[What notes are kept, what a family receives, and how to request records.]</span></p></div>
+<div><h3>Payment</h3><p>Private pay, by check or credit card. HSA and FSA cards are accepted, and OT is generally an eligible expense — worth checking, because it works out as a discount at your tax rate. Superbills are available on request to submit to your insurer for out-of-network reimbursement.</p></div>
+<div><h3>Cancellation</h3><p>{{ site.policies.cancellation }}</p></div>
+<div><h3>Confidentiality</h3><p>What you tell me about your family stays between us. I'll only share information with another provider — your pediatrician, your school district, a therapist — with your agreement.</p><p>The one limit, and it applies to every licensed therapist in {{ site.licenseState }}: I'm a mandated reporter. If I have reasonable cause to believe a child is being abused or neglected, I'm required by law to report it. That obligation sits above confidentiality, and I'd rather you heard it here than discovered it later.</p></div>
 </div>
 </div>
 </section>

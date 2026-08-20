@@ -25,8 +25,8 @@ hideStickyCta: true
 <div class="contact-card">
 <h3>Book a call directly</h3>
 {% if site.bookingUrl %}
-<p>Pick a time that suits you — no back and forth.</p>
-<a class="btn" href="{{ site.bookingUrl }}">See available times</a>
+<p>Through my client portal. Choose <b>I'm a New Client</b> and tell me a little about what you're looking for — I'll be in touch to fix a time.</p>
+<a class="btn" href="{{ site.bookingUrl }}">Request an appointment</a>
 {% else %}
 <p class="todo-inline">[Scheduling link to be added — Calendly, Acuity, Jane or SimplePractice. Until then, families use the form or the direct details below.]</p>
 {% endif %}
@@ -104,9 +104,9 @@ hideStickyCta: true
 </fieldset>
 
 <div class="f-row">
-<label for="f-msg">What's going on?</label>
-<textarea id="f-msg" name="message" rows="6" aria-describedby="f-msg-help"></textarea>
-<p class="f-help" id="f-msg-help">A sentence or two is plenty. What's hard right now, and what you'd like to be different.</p>
+<label for="f-msg">Anything you'd like me to know? <span class="opt">(optional)</span></label>
+<textarea id="f-msg" name="message" rows="5" aria-describedby="f-msg-help"></textarea>
+<p class="f-help" id="f-msg-help">A line is plenty — just enough for me to know whether I'm the right person. Please keep health details about your child for the call itself or for the client portal, which is secure. This form isn't.</p>
 </div>
 
 <div class="f-row">
@@ -115,7 +115,7 @@ hideStickyCta: true
 </div>
 
 <button class="btn" type="submit">Send message</button>
-<p class="f-privacy">What you send goes to me and nobody else. I'll reply within <span class="todo-inline">[response time]</span>.</p>
+<p class="f-privacy">What you send comes to me and nobody else, and I'll reply within <span class="todo-inline">[response time]</span>. For anything you'd rather send securely, use <a class="lnk" href="{{ site.bookingUrl }}">the client portal</a> or just call.</p>
 </form>
 </div>
 </div>

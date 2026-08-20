@@ -285,6 +285,9 @@ nav .brand span{display:block;font-size:16px;font-weight:600;line-height:1.2;let
    to clear each other, and that vertical budget is what caps how large they
    can be. */
 .hero{padding:var(--s9) 0 calc(var(--s9) + var(--s5));text-align:center}
+/* Sits above the h1 and names the practice and the place — the hero's only
+   uppercase line, in the same label register as every section eyebrow. */
+.hero-eyebrow{margin-bottom:var(--s3)}
 .hero h1{font-size:var(--fs-hero);line-height:1.06;letter-spacing:-.025em;max-width:18ch;margin:0 auto var(--s4)}
 /* The hero is the one place a saturated shape is allowed to sit behind copy,
    so its text is ink rather than --body/--muted. Ink clears 4.5:1 on all five
@@ -621,8 +624,16 @@ footer .todo-inline{color:var(--on-surface-muted)}
 .fact-grid{grid-template-columns:repeat(4,1fr)}
 .policy-grid>div,.fact-grid>div{background:var(--card);border:1px solid var(--hair);border-radius:var(--radius);padding:var(--s4)}
 .sec-alt .policy-grid>div,.sec-alt .fact-grid>div{background:var(--card-hi);border-color:transparent}
+/* An odd number of policy boxes would leave a hole in the right column, and
+   the last box is usually the longest. Let it run the full width instead —
+   this self-corrects whether there are three boxes or five. */
+.policy-grid>div:last-child:nth-child(odd){grid-column:1/-1}
 .policy-grid h3,.fact-grid h3{margin-bottom:var(--s2)}
 .policy-grid p,.fact-grid p{font-size:16px}
+/* These boxes held a single paragraph until Confidentiality gained a second
+   one for the mandated-reporter duty, which then ran straight on from the
+   sentence above it. */
+.policy-grid p+p,.fact-grid p+p{margin-top:var(--s2)}
 .fact-grid p{font-weight:600;color:var(--ink);font-variation-settings:var(--rond-firm)}
 .fact-grid small{display:block;margin-top:5px;font-weight:400;font-size:13px;color:var(--muted);font-variation-settings:var(--rond)}
 

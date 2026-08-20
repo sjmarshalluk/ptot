@@ -31,6 +31,11 @@ faq:
 {{ shape('circle', 'blue', 'md', 'bl') }}
 {{ shape('blob', 'green', 'lg', 'gutter-r') }}
 <div class="container">
+{# The h1 is a promise, not a description — nothing above the fold said what
+   this practice actually is or where it is. This eyebrow carries both, in the
+   label register that every other section eyebrow already uses, so the hero
+   gains the words without gaining a second headline. #}
+<p class="label hero-eyebrow">Pediatric occupational therapy · {{ site.baseTown }}, {{ site.state }}</p>
 <h1 id="hero-h">Support that starts with your child, not a checklist.</h1>
 <p class="lede">Occupational therapy helps children take part in the things that make up their days — playing, eating, dressing, connecting, managing big feelings. I work in your home and out in the community, where real life actually happens.</p>
 <div class="hero-acts">
@@ -215,9 +220,9 @@ faq:
 </div>
 <div class="bio">
 <h2 id="about-h">About Julia</h2>
-<p class="big">I'm an occupational therapist based in {{ site.baseTown }}. I've spent the last six-plus years in pediatric OT, most of it in early-support work with babies and toddlers and their families, using a parent coaching model.</p>
-<p>Before my master's in occupational therapy at the {{ site.alumniOf }}, I spent five years as a mental health counselor and pediatric behavioral specialist on the inpatient psychiatric unit at Seattle Children's Hospital. That work still shapes how I understand children, families, and behavior today.</p>
-<p class="creds"><b>Credentials:</b> <span class="todo-inline">{{ site.credentials }}</span> · Licensed occupational therapist, {{ site.licenseState }} State · {{ site.alumniOf }}</p>
+<p class="big">I'm an occupational therapist based in {{ site.baseTown }}. I've spent over six years in pediatric OT, most of it in early-support work with babies and toddlers and their families, using a parent coaching model.</p>
+<p>Before my master's in occupational therapy at the {{ site.alumniOf }}, I spent another six years in behavioral medicine at Seattle Children's Hospital, as a mental health counselor and pediatric behavioral specialist on the inpatient unit. That work still shapes how I understand children, families, and behavior today.</p>
+<p class="creds"><b>Credentials:</b> {{ site.credentials }} · Licensed occupational therapist, {{ site.licenseState }} State · {{ site.alumniOf }}</p>
 <p><a class="lnk" href="/about/">More about my background and approach →</a></p>
 </div>
 </div>

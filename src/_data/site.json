@@ -5,26 +5,26 @@
   "_businessName_note": "The practice name — the site title, the nav lockup, og:site_name and the JSON-LD MedicalBusiness name all come from here. It must stay byte-identical to the Google Business Profile listing: conflicting name signals actively reduce confidence in the listing. Confirm with Julia before launch.",
 
   "name": "Julia Comstock-Ross",
-  "shortName": "Julia Comstock-Ross, OT",
+  "shortName": "Julia Comstock-Ross, OTR/L",
   "role": "Pediatric Occupational Therapist",
   "url": "https://example.com",
   "_url_note": "PLACEHOLDER — replace with the real domain before launch. Used for canonical, OG and sitemap URLs.",
 
-  "email": "[email address]",
-  "phone": "[phone number]",
-  "phoneHref": "",
-  "_contact_note": "phoneHref should be the tel: digits, e.g. +13605551234. Left empty until the real number exists so no broken tel link ships.",
+  "email": "julia@porttownsendot.com",
+  "phone": "360-207-1711",
+  "phoneHref": "+13602071711",
+  "_contact_note": "phoneHref is the tel: digits. Templates fall back to a marked placeholder if either is emptied, so never blank one without blanking the other.",
 
   "ogImage": null,
   "appleTouchIcon": null,
   "_image_note": "Both null until real assets exist. ogImage should be a 1200x630 PNG at /assets/img/og-default.png; appleTouchIcon a 180x180 PNG. A broken og:image is worse than none, so the tags are only emitted once these are set.",
 
-  "bookingUrl": "",
-  "_booking_note": "Calendly / Acuity / Jane / SimplePractice link. While empty, all CTAs route to /contact/ instead.",
+  "bookingUrl": "https://julia-comstock-ross.clientsecure.me/",
+  "_booking_note": "Julia's SimplePractice Client Portal. Deliberately the portal root rather than /request: the root offers both 'I'm a New Client' and 'Contact', so it stays valid whatever she configures inside SimplePractice, and it is the URL SimplePractice treats as canonical. Every 'Book a free intro call' button on the site — nav, hero, sticky CTA, every cta.njk block — reads this value. Empty it and they all fall back to /contact/.",
 
-  "credentials": "[MOT, OTR/L]",
+  "credentials": "OTR/L",
   "licenseState": "Washington",
-  "licenseNumber": "[license number]",
+  "licenseNumber": "OT.OT.60823135",
   "alumniOf": "University of Washington",
 
   "availability": {
@@ -56,7 +56,8 @@
     "Cape George"
   ],
   "_serviceArea_note": "UNCONFIRMED — Julia must confirm which of these she will actually drive to, and add any missing. This list feeds the JSON-LD areaServed and should match the Google Business Profile service area exactly.",
-  "travelRadius": "[travel radius / mileage policy]",
+  "travelRadius": "No additional mileage charge within the service area.",
+  "_travelRadius_note": "Julia supplied this with a question mark attached ('no additional mileage charge I dont think?'). It is published as a firm no-charge policy — confirm before launch, because a fees page is where families will hold her to it.",
 
   "services": [
     {
@@ -70,16 +71,19 @@
       "id": "family-consulting",
       "name": "Parent & family consulting",
       "price": 150,
-      "unit": "[session length]",
-      "priceLabel": "$150 / [session length]"
+      "unit": "hour",
+      "priceLabel": "$150 / hour"
     }
   ],
-  "_services_note": "Consulting unit is unconfirmed — currently '$150 / session' on the live site with no duration, sitting beside '$150 / hour' for OT. Needs a real duration.",
+  "_services_note": "Both services bill hourly. Consulting is hourly and may run longer than an hour, which the /services/ copy says explicitly.",
 
   "policies": {
-    "cancellation": "[cancellation policy]",
-    "superbills": null,
-    "_superbills_note": "UNRESOLVED BUSINESS DECISION — blocks launch. Set to true or false. A regional competitor (Home Front, Kenmore) issues superbills for out-of-network reimbursement, so families will compare. Templates read this and show the right copy; while null they show a clearly-marked placeholder."
+    "cancellation": "Sessions need to be cancelled at least 24 hours in advance. Inside 24 hours the full session fee is due.",
+    "superbills": true,
+    "_superbills_note": "RESOLVED: superbills are issued on request for families to submit for out-of-network reimbursement. Templates read this flag.",
+    "paymentMethods": "Check, credit card, HSA and FSA.",
+    "mandatedReporter": true,
+    "_mandatedReporter_note": "Washington law makes a licensed OT a mandated reporter. Stated on /services/ under Confidentiality so it is never a surprise mid-relationship."
   },
 
   "introCall": {

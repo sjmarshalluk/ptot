@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Business card — Port Townsend Occupational Therapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wght@6..144,-10..0,400..700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* ==========================================================================
+   Business card — 3.5 x 2 in trim, 3.75 x 2.25 in with bleed.
+
+   Same two rules as the site sheet:
+   1. No line does a job a surface can do. Nothing here is drawn in black.
+   2. Colour arrives as shape. The brand colours appear at full strength only
+      as shapes crossing the trim — never behind the copy, which is why the
+      middle band of the card is deliberately kept empty.
+
+   Print: open in Chrome, Cmd+P, Save as PDF. Margins None, Scale 100,
+   background graphics on, headers and footers off. @page below sizes the
+   sheet, so no custom paper size is needed.
+   ========================================================================== */
+
+:root{
+  --bg:#faf8f2;
+  --ink:#111110;
+  --body:#3d3b36;
+  --muted:#67635b;
+  --ink-rgb:17,17,16;
+
+  --pink:#f2a2bd; --yellow:#f0c53a; --green:#4fa353; --red:#e5493a; --blue:#4a90d8;
+
+  --hair:rgba(var(--ink-rgb),.09);
+
+  --font:'Google Sans Flex','Google Sans',system-ui,sans-serif;
+  --font-mono:'Space Mono',ui-monospace,SFMono-Regular,monospace;
+  --rond:'ROND' 50;
+  --rond-soft:'ROND' 95;
+
+  /* Card geometry. Every offset is expressed against these three, so a
+     different trim (EU 85x55mm, say) is a change here and nowhere else. */
+  --trim-w:3.5in; --trim-h:2in;
+  --bleed:.125in;          /* trimmed away by the guillotine */
+  --safe:.125in;           /* keep-clear inside the trim; no type crosses it */
+  --card-w:calc(var(--trim-w) + var(--bleed) * 2);
+  --card-h:calc(var(--trim-h) + var(--bleed) * 2);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ---- the card ----------------------------------------------------------- */
+.card{
+  position:relative;overflow:hidden;
+  width:var(--card-w);height:var(--card-h);
+  background:var(--bg);
+  font-family:var(--font);font-variation-settings:var(--rond);
+  color:var(--body);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Type sits inside the safe box, which is inset from the TRIM rather than from
+   the bleed edge — so the copy is optically centred on the finished card, not
+   on the sheet it was cut from. */
+.safe{
+  position:absolute;
+  inset:calc(var(--bleed) + var(--safe));
+  z-index:2;
+  display:flex;flex-direction:column;
+}
+
+/* ---- shapes ------------------------------------------------------------- */
+/* Three forms from the site's shape vocabulary — the hero's own trio: pink
+   arch, green blob, blue circle. Each crosses the trim rather than sitting
+   inside it, but only by a quarter or so, so the whole silhouette still reads
+   as a shape rather than as a corner wedge. Sizes are in inches because the
+   card is a fixed physical object. */
+.shape{position:absolute;z-index:0;display:block;line-height:0;pointer-events:none}
+.shape svg{display:block;width:100%;height:auto;overflow:visible}
+.shape svg path{fill:var(--fill)}
+
+/* ---- front -------------------------------------------------------------- */
+.wordmark{
+  margin:auto;text-align:center;
+  font-size:13pt;line-height:1.14;font-weight:600;letter-spacing:-.02em;
+  color:var(--ink);
+}
+/* Two lines, one lockup: the break is authored, never left to wrapping, so the
+   card sets identically under any font fallback. */
+.wordmark b{display:block;font-weight:600}
+
+/* ---- back --------------------------------------------------------------- */
+/* Name at the top of the safe box, contact at the bottom of it, the space
+   between left empty. */
+.safe-back{justify-content:space-between;align-items:flex-start}
+.name{
+  font-size:12pt;font-weight:600;letter-spacing:-.02em;line-height:1.2;
+  color:var(--ink);font-variation-settings:var(--rond-soft);
+}
+.contact{
+  display:flex;flex-direction:column;gap:.035in;
+  font-size:9pt;line-height:1.3;color:var(--ink);
+}
+.contact a{color:var(--ink);text-decoration:none}
+
+/* ==========================================================================
+   Screen preview only — none of this reaches the PDF.
+   ========================================================================== */
+@media screen{
+  body{background:#e8e5dd;font-family:var(--font);color:var(--body);padding:40px 32px 64px;display:flex;flex-direction:column;align-items:center;gap:28px}
+  .notes{max-width:560px;font-size:14px;line-height:1.6;color:#3d3b36}
+  .notes h1{font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
+  .notes h2{font-size:12px;font-family:var(--font-mono);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:20px 0 6px}
+  .notes ul{padding-left:18px}
+  .notes code{font-family:var(--font-mono);font-size:12px;background:#fff;padding:1px 5px;border-radius:4px}
+  /* Shown at 2x. The PDF is still physically 3.5 x 2in — this only makes the
+     type big enough on screen to actually judge. */
+  .sheet{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;zoom:2}
+  .card{box-shadow:0 16px 36px -12px rgba(17,17,16,.28)}
+  /* the trim line: where the guillotine lands. Everything outside it is lost. */
+  .card::after{
+    content:"";position:absolute;z-index:9;pointer-events:none;
+    inset:var(--bleed);
+    outline:1px dashed rgba(229,73,58,.55);
+  }
+  .cap{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:8px}
+  .ph{background:rgba(240,197,58,.42);border-radius:3px;padding:0 2px}
+}
+
+@media print{
+  .notes,.cap{display:none!important}
+  .ph{background:none;padding:0}
+  body{background:none;padding:0}
+  .sheet{display:block}
+  /* One card per page at exact card size — the format print shops want.
+     Front is page 1, back is page 2. */
+  @page{size:3.75in 2.25in;margin:0}
+  .card{break-after:page;box-shadow:none}
+  .card:last-of-type{break-after:auto}
+  /* Colour must not be "optimised" away by the driver. */
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="notes">
+  <h1>Business card — Port Townsend Occupational Therapy</h1>
+  <p>3.5 × 2 in trim (US standard) · 3.75 × 2.25 in with 0.125 in bleed · dashed red line = the cut. No type crosses the inner 0.125 in safe margin; the shapes are meant to be cut through.</p>
+  <h2>To make the print PDF</h2>
+  <ul>
+    <li>Open this file in Chrome → <code>⌘P</code></li>
+    <li>Destination <b>Save as PDF</b>, Margins <b>None</b>, Scale <b>100%</b>, <b>Background graphics ON</b>, headers/footers off</li>
+    <li>You get a 2-page PDF: page 1 front, page 2 back, each 3.75 × 2.25 in</li>
+  </ul>
+  <h2>Before it goes to the printer</h2>
+  <ul>
+    <li>Highlighted values are placeholders from <code>src/_data/site.json</code> and are not real yet</li>
+    <li>Ask the printer for <b>uncoated or matte</b> stock, 16–18 pt — the palette is warm and chalky and gloss will fight it</li>
+  </ul>
+</div>
+
+<div class="sheet">
+
+  <!-- ===================== FRONT ===================== -->
+  <div>
+    <div class="card card-front">
+      <!-- Three shapes at roughly half the card's height each. They are sized
+           and placed so a clear diagonal channel is left across the middle:
+           saturated brand colour never sits behind copy anywhere in this
+           identity, so the wordmark needs no contrast override. The channel is
+           the constraint that fixes both the shape sizes and the type size —
+           grow one and the other has to give. -->
+
+      <!-- top-left: pink arch -->
+      <span class="shape" style="--fill:var(--pink);width:1.8in;top:0;left:0;translate:-34% -46%;rotate:-10deg">
+        <svg viewBox="0 0 300 320"><path d="M156 6c84-6 140 66 140 152s-52 158-136 160S6 232 6 148C6 68 72 12 156 6Z"/></svg>
+      </span>
+
+      <!-- top-right: green blob, the largest of the three -->
+      <span class="shape" style="--fill:var(--green);width:1.75in;top:0;right:0;translate:30% -40%;rotate:34deg">
+        <svg viewBox="0 0 320 300"><path d="M28 96C4 32 96-14 176 8c78 22 148 66 140 140-8 76-90 158-176 148C56 286 6 226 20 160c6-28 12-40 8-64Z"/></svg>
+      </span>
+
+      <!-- bottom-left: blue circle. Leaving the bottom-right corner empty is
+           what stops three shapes reading as a frame. -->
+      <span class="shape" style="--fill:var(--blue);width:1.6in;bottom:0;left:0;translate:-30% 38%">
+        <svg viewBox="0 0 300 300"><path d="M150 4c86 0 146 58 146 140s-64 152-150 152S4 226 4 144 64 4 150 4Z"/></svg>
+      </span>
+
+      <div class="safe">
+        <p class="wordmark">
+          <b>Port Townsend</b>
+          <b>Occupational Therapy</b>
+        </p>
+      </div>
+    </div>
+    <p class="cap">Front</p>
+  </div>
+
+  <!-- ===================== BACK ===================== -->
+  <div>
+    <div class="card card-back">
+      <div class="safe safe-back">
+        <p class="name">Julia Comstock-Ross<span class="ph">, MOT, OTR/L</span></p>
+
+        <div class="contact">
+          <span class="ph">(360) 000-0000</span>
+          <span class="ph">porttownsendot.com</span>
+          <span class="ph">julia@porttownsendot.com</span>
+        </div>
+      </div>
+    </div>
+    <p class="cap">Back</p>
+  </div>
+
+</div>
+</body>
+</html>
