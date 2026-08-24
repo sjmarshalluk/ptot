@@ -149,6 +149,11 @@ schema here deliberately publishes no street address.
   and with no build log. Vercel then keeps serving the previous deployment, so the site looks
   fine and simply doesn't update. That is exactly what happened on 24 Aug. Keep explanations
   here, not in that file.
+- **Redirect sources must carry the trailing slash.** With `trailingSlash: true`, Vercel
+  normalises `/what-to-expect` to `/what-to-expect/` with a 308 *before* matching redirects,
+  so a source written without the slash never fires — the normalised URL then hits the static
+  stub and returns **200**. Both forms are now listed. The stub is why this looked fine in a
+  browser; verify with `curl -sI`, not by clicking.
 - **`cleanUrls` is deliberately not set.** Eleventy already emits directory URLs
   (`/about/index.html` served at `/about/`), and combining `cleanUrls` with `trailingSlash`
   can produce a redirect loop.

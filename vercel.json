@@ -5,6 +5,11 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/what-to-expect/",
+      "destination": "/in-home-ot/",
+      "permanent": true
+    },
+    {
       "source": "/what-to-expect",
       "destination": "/in-home-ot/",
       "permanent": true
