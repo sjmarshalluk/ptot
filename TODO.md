@@ -11,12 +11,16 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 
 ## Blocking — the site should not go live without these
 
-**All previously blocking items are answered.** What remains is deployment, not information.
+**Nothing.** The site is live at https://www.porttownsendot.com and every launch blocker is closed.
 
-| # | What's needed | Where it goes | Why it blocks |
-|---|---|---|---|
-| 1 | **Deploy, and verify the 301 actually fires** | `vercel.json` | The redirect config exists but has never run. After the first deploy, confirm `curl -sI https://www.porttownsendot.com/what-to-expect/` returns `301` with a `location:` of `/in-home-ot/` — not `200`. A meta-refresh stub still ships as a fallback, so a broken redirect will look fine in a browser and silently fail to pass ranking authority. |
-| 2 | **Point the bare domain at the www one** | DNS + Vercel domain settings | `site.url` is `https://www.porttownsendot.com` and every canonical tag now says so. `porttownsendot.com` must **301** to it, not merely resolve — two live forms compete with each other. The business card prints the bare domain, so this redirect is load-bearing in print too. |
+Verified against production on 24 Aug 2026: all 8 pages 200; bare domain 308s to www; `/what-to-expect/` 308s to `/in-home-ot/`; JSON-LD parses with 10 in-person towns and 5 remote counties; sitemap (11 urls) and robots.txt serve.
+
+> Vercel returns **308** for `"permanent": true`, not 301. That is correct and Google treats the two identically — don't "fix" it. If a literal 301 is ever needed, swap `permanent` for `"statusCode": 301`.
+
+### Worth doing next
+
+- **Deployment Protection is on.** The `*.vercel.app` URLs 302 to a Vercel SSO login. The custom domain serves publicly, so this isn't urgent — but confirm the protection scope is *Preview only*, or a future settings change could gate the live site.
+- The four remaining `[bracketed placeholders]` are all on `/for-providers/`: current wait time, further scope exclusions, the classroom consulting rate, and the one-page referral PDF. None block launch; see the Important list below.
 
 ### Resolved 2026-08-24
 
@@ -25,7 +29,7 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 | Real domain | `https://www.porttownsendot.com` — www is canonical. |
 | Upper age limit | **12**, with older children up to 18 by arrangement. Stated in the ages FAQ, the home-page fit list and the providers scope box. |
 | Practice name | Confirmed as `Port Townsend Occupational Therapy`, exactly as-is. Must stay byte-identical to the Google Business Profile. |
-| Hosting / the `/what-to-expect/` 301 | Vercel. `vercel.json` written with the redirect — still needs verifying against a live deploy. |
+| Hosting / the `/what-to-expect/` 301 | Vercel. Deployed and verified live: `/what-to-expect/` → 308 → `/in-home-ot/`. |
 | Mileage policy | Confirmed: no charge anywhere in the service area, absorbed into the hourly rate. |
 | Remote pricing | Confirmed: same $150/hour as in person. |
 | Remote area | Confirmed: Jefferson, Clallam, Mason, Kitsap and Grays Harbor counties. |
