@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+
+  "//": "Eleventy already emits directory URLs (/about/index.html served at /about/), so cleanUrls is deliberately NOT set — combining it with trailingSlash can produce a redirect loop. trailingSlash matches the permalinks in src/, which all end in a slash.",
+  "trailingSlash": true,
+
+  "redirects": [
+    {
+      "//": "/what-to-expect/ was published, then absorbed into /in-home-ot/. src/what-to-expect.njk still ships a noindex + canonical + meta-refresh stub as a belt-and-braces fallback, but this is the real 301 that passes ranking authority. Redirects are evaluated before the filesystem, so this wins over the stub.",
+      "source": "/what-to-expect",
+      "destination": "/in-home-ot/",
+      "permanent": true
+    }
+  ]
+}

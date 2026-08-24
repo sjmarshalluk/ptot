@@ -3,7 +3,7 @@ layout: base.njk
 permalink: /for-providers/
 title: "For Providers & Schools — Referring to Pediatric OT in Jefferson County"
 breadcrumb: "For providers"
-description: "Referral information for pediatricians, early intervention, SLPs and schools: scope, ages, credentials, service area, availability and classroom consultation."
+description: "Referral information for pediatricians, early intervention, SLPs and schools: scope, ages, credentials, service area, telehealth availability and classroom consultation."
 ctaHeading: "Questions before you refer?"
 ctaBody: "Call or email directly — I'm glad to talk through whether a particular child is a fit before you mention my name to a family."
 ---
@@ -24,9 +24,9 @@ ctaBody: "Call or email directly — I'm glad to talk through whether a particul
 <div class="fact-grid">
 <div><h3>Clinician</h3><p>{{ site.name }}, {{ site.credentials }}</p></div>
 <div><h3>License</h3><p>Licensed occupational therapist, {{ site.licenseState }} State<br>License #{{ site.licenseNumber }}</p></div>
-<div><h3>Setting</h3><p>In-home and community-based. No clinic site.</p></div>
-<div><h3>Ages</h3><p>{{ site.ages.from }} to <span class="todo-inline">{{ site.ages.to }}</span><br>Primary specialty: {{ site.ages.specialty }}</p></div>
-<div><h3>Service area</h3><p>{{ site.baseTown }} and {{ site.region }}, {{ site.state }}</p></div>
+<div><h3>Setting</h3><p>In-home and community-based, or remote by video. No clinic site.</p></div>
+<div><h3>Ages</h3><p>{{ site.ages.from }} to {{ site.ages.to }}<br>Primary specialty: {{ site.ages.specialty }}<br><small>Older children up to 18 by arrangement — worth asking.</small></p></div>
+<div><h3>Service area</h3><p>In person: {{ site.baseTown }} and {{ site.region }}, {{ site.state }}<br>Remote: {{ site.remoteArea }}</p></div>
 <div><h3>Availability</h3><p>{% if site.availability.accepting %}Accepting new families{% else %}Not currently accepting{% endif %} · wait <span class="todo-inline">{{ site.availability.waitTime }}</span><br><small>Updated {{ site.availability.updated | monthYear }}</small></p></div>
 <div><h3>Payment</h3><p>Private pay, ${{ site.services[0].price }}/hour. No insurance billing, no authorization delay, no diagnosis requirement.</p></div>
 <div><h3>Referral required</h3><p>No. Families can self-refer. A note from you is welcome but not necessary.</p></div>
@@ -88,7 +88,7 @@ ctaBody: "Call or email directly — I'm glad to talk through whether a particul
 <div class="split-head"><h2 id="refer-h">How to refer.</h2></div>
 <div class="split-body">
 <ol class="plain-ol">
-<li><b>Give the family my details.</b> That's genuinely enough — no form, no referral letter, no authorization. They book a free {{ site.introCall.minutes }}-minute call and we work out whether it's a fit.</li>
+<li><b>Give the family my details.</b> That's genuinely enough — no form, no referral letter, no authorization. They call or email me, we talk it through at no cost, and we work out whether it's a fit.</li>
 <li><b>Or contact me first</b> if you'd rather check the fit before raising it with them. Quicker for everyone if it turns out I'm not the right person.</li>
 <li><b>Tell the family to mention you</b> when they call, or send me a note yourself, so I know you're involved and can be in touch if coordinating would help.</li>
 </ol>

@@ -11,15 +11,24 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 
 ## Blocking — the site should not go live without these
 
+**All previously blocking items are answered.** What remains is deployment, not information.
+
 | # | What's needed | Where it goes | Why it blocks |
 |---|---|---|---|
-| 1 | **Real domain** | `site.json` → `url` | Currently `https://example.com`. Canonical tags, Open Graph URLs, the sitemap and the JSON-LD all derive from it, so they're all wrong until this is set. |
-| 2 | **Contact form endpoint** | `src/contact.njk` → the `action` attribute | The form is fully built but posts nowhere. Formspree or Netlify Forms. It is now deliberately scoped as a low-stakes "get in touch" form — the clinical detail goes through SimplePractice instead — so a standard handler is fine. |
-| 3 | **A free 15-minute consultation appointment type in SimplePractice** | SimplePractice → Settings → Scheduling and inquiries | Every CTA on this site says "Book a free intro call" and now lands on the Client Portal. If the new-client request flow doesn't offer a free 15-minute option, the promise breaks at the exact moment a family is converting. Test it signed out, in a private window. |
-| 4 | **Upper age limit** | `site.json` → `ages.to` | A parent of an eight-year-old currently cannot tell whether this practice is for them. |
-| 5 | **Confirm the practice name** | `site.json` → `businessName` | Currently `Port Townsend Occupational Therapy`. It is now the nav lockup, the home-page `<title>`, `og:site_name` and the JSON-LD `MedicalBusiness.name`. It must end up **byte-identical** to the Google Business Profile listing — conflicting name signals actively reduce confidence in the listing, which is the same reason no street address is published. Julia has to confirm this is the name she's registering under. |
-| 6 | **A real 301 for `/what-to-expect/`** | host config — `_redirects` (Netlify), `vercel.json`, or server rules | That page was absorbed into `/in-home-ot/`; the URL now serves a stub with a canonical, `noindex,follow` and a meta refresh. That is a client-side substitute. Search engines pass authority properly only through a server 301, and the URL has been published. |
-| 7 | **Confirm the no-mileage-charge policy** | `site.json` → `travelRadius` | Supplied as "no additional mileage charge I don't think?" and published on `/services/` and `/in-home-ot/` as a firm commitment. A fees page is where families will hold her to it, so it needs a yes or a no. |
+| 1 | **Deploy, and verify the 301 actually fires** | `vercel.json` (written, untested) | The redirect config exists but has never run. After the first deploy, confirm `curl -sI https://www.porttownsendot.com/what-to-expect/` returns `301` with a `location:` of `/in-home-ot/` — not `200`. A meta-refresh stub still ships as a fallback, so a broken redirect will look fine in a browser and silently fail to pass ranking authority. |
+| 2 | **Point the bare domain at the www one** | DNS + Vercel domain settings | `site.url` is `https://www.porttownsendot.com` and every canonical tag now says so. `porttownsendot.com` must **301** to it, not merely resolve — two live forms compete with each other. The business card prints the bare domain, so this redirect is load-bearing in print too. |
+
+### Resolved 2026-08-24
+
+| Was blocking | Now |
+|---|---|
+| Real domain | `https://www.porttownsendot.com` — www is canonical. |
+| Upper age limit | **12**, with older children up to 18 by arrangement. Stated in the ages FAQ, the home-page fit list and the providers scope box. |
+| Practice name | Confirmed as `Port Townsend Occupational Therapy`, exactly as-is. Must stay byte-identical to the Google Business Profile. |
+| Hosting / the `/what-to-expect/` 301 | Vercel. `vercel.json` written with the redirect — still needs verifying against a live deploy. |
+| Mileage policy | Confirmed: no charge anywhere in the service area, absorbed into the hourly rate. |
+| Remote pricing | Confirmed: same $150/hour as in person. |
+| Remote area | Confirmed: Jefferson, Clallam, Mason, Kitsap and Grays Harbor counties. |
 
 ### Resolved 2026-08-20 (from Julia's notes)
 
@@ -35,6 +44,8 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 | Payment methods | Check, credit card, HSA and FSA. |
 | Records policy | Section deleted from `/services/` at Julia's request. |
 | Booking link | `https://julia-comstock-ross.clientsecure.me/` — her SimplePractice Client Portal. Drives every CTA on the site. |
+| Booking an intro call | Removed entirely — see the Aug 24 note below. Families phone or email. |
+| Contact form endpoint | No longer blocking — the form is hidden (`site.json` → `contactFormEnabled: false`). It becomes blocking again the moment that flag is flipped back on. |
 
 ---
 
@@ -67,6 +78,11 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 - **Current wait time** (`site.json` → `availability.waitTime`) and keep
   `availability.updated` current. Research on referral behaviour puts a dated availability
   line among the strongest factors in which provider a pediatrician names.
+- **The `/contact/` message form**, if Julia wants it back. The markup is intact in
+  `src/contact.njk` behind `site.json` → `contactFormEnabled`. Turning it on needs a form
+  endpoint set at the same time (Formspree or Netlify Forms), or it renders its own
+  placeholder warning where the form should be. Families currently reach her three ways —
+  the portal, email and phone — which is why it could come out without leaving a gap.
 - **Named post-professional training** — Ayres/SI certification, feeding, DIR, handwriting
   programs. Referrers respond to specificity. Add to `/about/` and `/for-providers/`.
 - **Response time** — `/contact/` promises a reply within `[response time]`.
@@ -126,15 +142,36 @@ schema here deliberately publishes no street address.
   write reports?") was changed to match — the two must not drift apart again.
 - **Siblings and pets are a judgement call, not a blanket yes.** Stated that way in the
   practical-things list on `/in-home-ot/` and in the FAQ on the same page.
-- **SimplePractice is linked, not embedded.** There is no public SimplePractice API on the
-  standard plans, so a custom form cannot post into it — the only options are their hosted
-  flows. Their appointment-request *widget* is a third-party JavaScript embed that renders a
-  modal this design system can't style; a plain link to the Client Portal reaches the same
-  place with no script, no CSP exception and no visual seam. `bookingUrl` points at the
-  portal root rather than `/request` so it stays valid whatever gets configured inside
-  SimplePractice.
-- **The `/contact/` form is deliberately not an intake form.** It posts to a third party, so
-  it asks only what's needed to make contact and tells families in the help text to keep
+- **There is no bookable intro call (Aug 2026).** Julia doesn't want families booking a
+  15-minute slot; she wants them to phone or email. Every CTA now reads **"Get in touch"** and
+  goes to `/contact/`. A free first conversation still happens — it just has no fixed length
+  and isn't booked in advance. The word "free" used to appear 20 times across 11 files and
+  every single one was about the intro call; the promise now reads "costs nothing", which
+  attaches to a conversation better than "free" attached to a product. Two arguments rested
+  on it — the private-pay FAQ on `/services/` and the same argument restated in
+  `/resources/private-pay-pediatric-ot/` — and both were rewritten rather than word-swapped.
+- **SimplePractice is now a footer link for existing clients only.** `bookingUrl` was renamed
+  `clientPortalUrl` so nobody wires it back into a CTA. There is no public SimplePractice API
+  on the standard plans, and their appointment-request widget is a third-party JavaScript
+  embed that renders a modal this design system can't style — neither matters any more, but
+  both are worth knowing before anyone reaches for it again.
+- **Remote sessions are a second delivery mode, not a second practice.** In-person stays East
+  Jefferson County; remote reaches the Olympic Peninsula. Both services, same rate. The
+  argument on `/in-home-ot/` ("Why not a clinic room?") had to be reframed rather than
+  softened: it was never an argument for Julia being physically present, it's an argument
+  against a room the child doesn't live in — and on video the session is still in their own
+  kitchen. Keep that distinction if you edit that page.
+- **The JSON-LD keeps two areas deliberately separate.** Top-level `areaServed` lists only the
+  ten towns she drives to, because it has to stay byte-aligned with the Google Business
+  Profile. Remote reach lives on a separate `availableService` node with its own
+  `areaServed` and an `availableChannel`. Merging them would create exactly the conflicting
+  location signal the schema file exists to avoid.
+- **The `/contact/` form is hidden, not deleted.** `contactFormEnabled` is false: with the
+  portal, email and phone all live there were three working routes to Julia and no endpoint
+  behind the form, so it was the one thing on the page that couldn't do its job. The markup
+  and its styling stay in the repo untouched.
+- **When it comes back, it is deliberately not an intake form.** It posts to a third party,
+  so it asks only what's needed to make contact and its help text tells families to keep
   health details for the call or the portal. Everything clinical goes through SimplePractice,
   which lands on its Inquiries page.
 - **`image-slot.js` has been moved to `tools/`.** It's a 65KB development-time drag-and-drop
@@ -154,5 +191,5 @@ npm run build      # writes _site/
 Before launch, this should return nothing:
 
 ```
-grep -rn "\[email\|\[phone\|\[MOT\|\[license\|\[form endpoint\|\[session length\|\[cancellation\|paediatric\|behaviour\|programme\|individualis" src/
+grep -rn "\[email\|\[phone\|\[MOT\|\[license\|\[form endpoint\|\[session length\|\[cancellation\|introCall\|intro call\|15-minute\|fifteen-minute\|bookingUrl\|paediatric\|behaviour\|programme\|individualis" src/
 ```

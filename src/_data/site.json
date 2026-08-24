@@ -2,13 +2,13 @@
   "_comment": "Single source of truth. Anything in [square brackets] is an unconfirmed placeholder that Julia must supply before launch — see TODO.md. Never invent a value here.",
 
   "businessName": "Port Townsend Occupational Therapy",
-  "_businessName_note": "The practice name — the site title, the nav lockup, og:site_name and the JSON-LD MedicalBusiness name all come from here. It must stay byte-identical to the Google Business Profile listing: conflicting name signals actively reduce confidence in the listing. Confirm with Julia before launch.",
+  "_businessName_note": "Confirmed Aug 2026. The site title, the nav lockup, og:site_name and the JSON-LD MedicalBusiness name all come from here. It must stay byte-identical to the Google Business Profile listing: conflicting name signals actively reduce confidence in the listing. Do not edit casually.",
 
   "name": "Julia Comstock-Ross",
   "shortName": "Julia Comstock-Ross, OTR/L",
   "role": "Pediatric Occupational Therapist",
-  "url": "https://example.com",
-  "_url_note": "PLACEHOLDER — replace with the real domain before launch. Used for canonical, OG and sitemap URLs.",
+  "url": "https://www.porttownsendot.com",
+  "_url_note": "Confirmed Aug 2026. The www form is canonical — the bare domain must 301 here, not merely resolve, or the two compete. Note the business card prints 'porttownsendot.com' without the www, which is normal print convention and relies on that redirect. Used for canonical, OG and sitemap URLs.",
 
   "email": "julia@porttownsendot.com",
   "phone": "360-207-1711",
@@ -19,8 +19,11 @@
   "appleTouchIcon": null,
   "_image_note": "Both null until real assets exist. ogImage should be a 1200x630 PNG at /assets/img/og-default.png; appleTouchIcon a 180x180 PNG. A broken og:image is worse than none, so the tags are only emitted once these are set.",
 
-  "bookingUrl": "https://julia-comstock-ross.clientsecure.me/",
-  "_booking_note": "Julia's SimplePractice Client Portal. Deliberately the portal root rather than /request: the root offers both 'I'm a New Client' and 'Contact', so it stays valid whatever she configures inside SimplePractice, and it is the URL SimplePractice treats as canonical. Every 'Book a free intro call' button on the site — nav, hero, sticky CTA, every cta.njk block — reads this value. Empty it and they all fall back to /contact/.",
+  "contactFormEnabled": false,
+  "_contactForm_note": "Turns the 'Or send a message' section on /contact/ on and off. Off for now — families phone or email, and the form still has no endpoint behind it. The markup is intact in src/contact.njk; set this true to bring it back, and set the form action at the same time or it will render its own placeholder warning.",
+
+  "clientPortalUrl": "https://julia-comstock-ross.clientsecure.me/",
+  "_clientPortal_note": "Julia's SimplePractice Client Portal, for EXISTING clients only — documents, intake paperwork, billing. It is not a booking link and nothing on the site should present it as one: new families phone or email. Linked from exactly one place, the footer. Renamed from bookingUrl in Aug 2026 when the bookable intro call was removed, because a key called bookingUrl that no longer drives booking is a trap for whoever reads this next.",
 
   "credentials": "OTR/L",
   "licenseState": "Washington",
@@ -35,7 +38,8 @@
 
   "ages": {
     "from": "birth",
-    "to": "[upper age limit]",
+    "to": "12",
+    "toExceptions": "Older children up to 18 by arrangement — ask.",
     "specialty": "birth to three"
   },
 
@@ -55,9 +59,13 @@
     "Discovery Bay",
     "Cape George"
   ],
-  "_serviceArea_note": "UNCONFIRMED — Julia must confirm which of these she will actually drive to, and add any missing. This list feeds the JSON-LD areaServed and should match the Google Business Profile service area exactly.",
+  "_serviceArea_note": "Feeds the JSON-LD areaServed and must match the Google Business Profile service area exactly.",
+  "remoteArea": "Olympic Peninsula",
+  "remoteCounties": ["Jefferson", "Clallam", "Mason", "Kitsap", "Grays Harbor"],
+  "_remoteCounties_note": "Confirmed Aug 2026. Feeds the telehealth node in the JSON-LD only. In-person work stays inside serviceArea above; these counties describe remote reach only, and the two must not be merged: the top-level areaServed has to keep matching the Google Business Profile.",
+
   "travelRadius": "No additional mileage charge within the service area.",
-  "_travelRadius_note": "Julia supplied this with a question mark attached ('no additional mileage charge I dont think?'). It is published as a firm no-charge policy — confirm before launch, because a fees page is where families will hold her to it.",
+  "_travelRadius_note": "Confirmed Aug 2026: no mileage charge anywhere in the service area, absorbed into the hourly rate. Stated on /services/ and /in-home-ot/.",
 
   "services": [
     {
@@ -84,11 +92,6 @@
     "paymentMethods": "Check, credit card, HSA and FSA.",
     "mandatedReporter": true,
     "_mandatedReporter_note": "Washington law makes a licensed OT a mandated reporter. Stated on /services/ under Confidentiality so it is never a surprise mid-relationship."
-  },
-
-  "introCall": {
-    "minutes": 15,
-    "label": "free 15-minute intro call"
   },
 
   "positioning": "Neuroaffirmative · relationship-based · activity-led",

@@ -12,7 +12,7 @@ faq:
   - q: "Is my child too young for occupational therapy?"
     a: "Almost certainly not. A great deal of pediatric OT happens between birth and three, when the foundations of play, feeding, movement and communication are being built. Early support is often shorter and simpler than later support."
   - q: "What if I'm wrong and it's just a phase?"
-    a: "Then you've spent a free fifteen-minute phone call finding that out, and a good therapist will tell you so plainly. That's a reasonable trade for the months of wondering that the alternative usually involves."
+    a: "Then you've spent a phone call that cost you nothing finding that out, and a good therapist will tell you so plainly. That's a reasonable trade for the months of wondering that the alternative usually involves."
 ---
 
 The short answer: if something in your child's daily life has been hard for a while, is not getting easier, and is shaping how your household runs — that is enough to ask about. You do not need a diagnosis, a referral, or a certainty that something is wrong.
@@ -73,11 +73,13 @@ This is the real question behind most calls, so here's the rough test I'd use.
 
 Sometimes it is. Children develop unevenly and on their own schedules, and a great deal resolves without intervention. If something started recently, is already improving, follows an obvious disruption like a new sibling or a house move, or isn't bothering your child, waiting is entirely reasonable.
 
-I'd rather tell you that on a free call than take you on.
+I'd rather tell you that in a first conversation that costs you nothing than take you on.
 
 ## What to do next
 
-If you're in Port Townsend or East Jefferson County, [book a free fifteen-minute intro call](/contact/) and we'll work out whether this is an OT thing, and whether I'm the right person for it. If I'm not, I'll say so and point you somewhere better.
+If you're in Port Townsend or East Jefferson County, [call or email me](/contact/) and we'll work out whether this is an OT thing, and whether I'm the right person for it. It costs nothing to ask, and if I'm not the right person I'll say so and point you somewhere better.
+
+Further out on the Olympic Peninsula, [remote sessions](/in-home-ot/#remote) cover the same ground over video — worth asking about rather than assuming distance rules it out.
 
 Elsewhere, your pediatrician is a reasonable starting point — and if your child is under three, your state's early intervention program can evaluate at no cost to you.
 

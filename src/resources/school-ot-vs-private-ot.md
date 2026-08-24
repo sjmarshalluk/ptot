@@ -67,7 +67,7 @@ The two fit together well when they're coordinated:
 - **School OT** handles the classroom — handwriting, seating, the sensory demands of the building
 - **Private OT** handles home and community — mealtimes, routines, regulation, play, family life
 
-Private OT also isn't capped by educational relevance, doesn't require eligibility, and can begin without a wait. In my own practice, sessions happen [in the home](/in-home-ot/), which is exactly where the school-day gap tends to show up.
+Private OT also isn't capped by educational relevance, doesn't require eligibility, and can begin without a wait. In my own practice, sessions happen [in the home](/in-home-ot/) — in person, or remotely by video — which is exactly where the school-day gap tends to show up.
 
 ## Making them work together
 
@@ -87,4 +87,4 @@ I'm glad to coordinate with school teams, contribute to IEP discussions, or simp
 
 The question worth asking isn't "does my child already get OT?" It's "are the things that are hardest for our family being addressed by anyone?"
 
-If the answer is no, that gap is real regardless of what's happening at school. [Book a free intro call](/contact/) and we can work out whether it's something I can help with.
+If the answer is no, that gap is real regardless of what's happening at school. [Call or email me](/contact/) — it costs nothing to ask — and we can work out whether it's something I can help with.

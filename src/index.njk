@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: "Port Townsend Occupational Therapy"
-description: "In-home pediatric occupational therapy in Port Townsend and East Jefferson County. Mealtimes, sensory processing, big feelings, play. No referral needed."
+description: "In-home and remote pediatric occupational therapy in Port Townsend and East Jefferson County. Mealtimes, sensory processing, big feelings, play. No referral needed."
 hasShapes: true
 faqHeading: "The questions that come up first."
 faqClass: "sec-alt tint-pink"
@@ -10,11 +10,11 @@ faq:
   - q: "Does my child need a diagnosis or a referral?"
     a: "No. If something is making daily life harder, that's enough to start with. You don't need a diagnosis, a referral, or a waiting list place — just a conversation."
   - q: "Do you take insurance?"
-    a: "I'm a private-pay practice, at $150 an hour. That means no diagnosis requirement, no cap on sessions, no waiting on authorizations, and no pressure to fit your child into a billing category. It also means the cost sits with your family rather than an insurer, which is a real trade-off and worth talking through on the intro call."
+    a: "I'm a private-pay practice, at $150 an hour. That means no diagnosis requirement, no cap on sessions, no waiting on authorizations, and no pressure to fit your child into a billing category. It also means the cost sits with your family rather than an insurer, which is a real trade-off and worth talking through before you commit to anything. Call or email me and we'll get into it."
   - q: "What ages do you work with?"
-    a: "Much of my background is with babies and toddlers, birth to three, and that's where I'm most specialized. I also work with older children on play, social skills, fine motor development and daily routines. If you're not sure whether your child is a fit, the intro call is the fastest way to find out."
+    a: "<p>Birth to twelve. Much of my background is with babies and toddlers, birth to three, and that's where I'm most specialized. I also work with older children on play, social skills, fine motor development and daily routines.</p><p>If your child is older than twelve, ask anyway — I take teenagers up to 18 by arrangement, depending on what's going on and whether I'm genuinely the right person. Calling me is the fastest way to find out.</p>"
   - q: "What area do you cover?"
-    a: "Port Townsend and East Jefferson County, in your home or out in the community. <a href=\"/in-home-ot/\">More about how in-home sessions work →</a>"
+    a: "In person, Port Townsend and East Jefferson County — in your home or out in the community. Remotely, anywhere on the Olympic Peninsula. <a href=\"/in-home-ot/\">More about how sessions work →</a>"
   - q: "We're already working with early intervention or the school. Does this conflict?"
     a: "Not at all. I'm happy to work alongside what's already in place, and to coordinate with your other providers if you'd like. School-based OT is limited to what affects a child's access to education; private OT isn't, so families often do both."
 ---
@@ -37,9 +37,9 @@ faq:
    gains the words without gaining a second headline. #}
 <p class="label hero-eyebrow">Pediatric occupational therapy · {{ site.baseTown }}, {{ site.state }}</p>
 <h1 id="hero-h">Support that starts with your child, not a checklist.</h1>
-<p class="lede">Occupational therapy helps children take part in the things that make up their days — playing, eating, dressing, connecting, managing big feelings. I work in your home and out in the community, where real life actually happens.</p>
+<p class="lede">Occupational therapy helps children take part in the things that make up their days — playing, eating, dressing, connecting, managing big feelings. I work in your home and out in the community — or remotely by video — where real life actually happens.</p>
 <div class="hero-acts">
-<a class="btn" href="{{ site.bookingUrl or '/contact/' }}">Book a free intro call</a>
+<a class="btn" href="/contact/">Get in touch</a>
 <a class="lnk" href="/what-ot-helps-with/">Not sure if it's an OT thing? Start here</a>
 </div>
 <p class="fine">No diagnosis needed. No set packages. Start with a conversation.</p>
@@ -59,7 +59,7 @@ faq:
 <li>Licensed occupational therapist, {{ site.licenseState }}</li>
 <li>Master's in OT, {{ site.alumniOf }}</li>
 <li>6+ years in pediatrics</li>
-<li>In-home &amp; community sessions</li>
+<li>In-home, community &amp; remote sessions</li>
 </ul>
 </div>
 <div class="split-body">
@@ -109,7 +109,7 @@ faq:
 </div>
 <div class="sec-foot">
 <a class="btn out" href="/what-ot-helps-with/">See all of this in more detail</a>
-<a class="lnk" href="{{ site.bookingUrl or '/contact/' }}">Or just book a free intro call →</a>
+<a class="lnk" href="/contact/">Or just call or email me →</a>
 </div>
 </div>
 </section>
@@ -146,7 +146,7 @@ faq:
 <div class="grid2">
 <div class="svc">
 <div class="top"><h3>Individual occupational therapy</h3><div class="price">{{ site.services[0].priceLabel }}</div></div>
-<p>One-hour sessions in your home or out in the community, built around the everyday activities your child is working toward.</p>
+<p>One-hour sessions in your home, out in the community, or remotely by video, built around the everyday activities your child is working toward.</p>
 </div>
 <div class="svc">
 <div class="top"><h3>Parent &amp; family consulting</h3><div class="price">{{ site.services[1].priceLabel }}</div></div>
@@ -172,8 +172,8 @@ faq:
 <div class="fit-col fit-yes">
 <h3>This is probably a fit if</h3>
 <ul>
-<li>Your child is between {{ site.ages.from }} and <span class="todo-inline">{{ site.ages.to }}</span> — I'm most specialized in {{ site.ages.specialty }}</li>
-<li>You're in {{ site.baseTown }} or {{ site.region }}</li>
+<li>Your child is between {{ site.ages.from }} and {{ site.ages.to }} — I'm most specialized in {{ site.ages.specialty }}, and I'll sometimes take an older child up to 18, so ask</li>
+<li>You're in {{ site.baseTown }} or {{ site.region }} — or further out on the Olympic Peninsula and open to remote sessions</li>
 <li>Something in daily life has become hard, with or without a diagnosis</li>
 <li>You want to be part of sessions rather than wait in a lobby</li>
 <li>You're waiting on an assessment, a diagnosis, or an early-intervention place and don't want to lose that time</li>
@@ -188,7 +188,7 @@ faq:
 <li>You're looking for speech or physical therapy — those are different professions, and I'm glad to point you toward local options</li>
 <li>You need a formal diagnostic evaluation; that's a different process, usually through your pediatrician</li>
 </ul>
-<p class="fit-note">If any of these are you, say so on the intro call. I'd rather send you to the right place than take you on.</p>
+<p class="fit-note">If any of these are you, say so when you get in touch. I'd rather send you to the right place than take you on.</p>
 </div>
 </div>
 </div>
@@ -201,8 +201,8 @@ faq:
 <p>No paperwork before you've spoken to me, and nothing you can't back out of.</p>
 </div>
 <ol class="steps">
-<li><span class="n" aria-hidden="true">1</span><h3>A free {{ site.introCall.minutes }}-minute call</h3><p>You tell me what's going on. I tell you honestly whether I think OT would help and whether I'm the right person. No cost, no obligation.</p></li>
-<li><span class="n" aria-hidden="true">2</span><h3>We book a first session</h3><p>In your home, at a time that fits your family's day. I'll send a short intake form beforehand.</p></li>
+<li><span class="n" aria-hidden="true">1</span><h3>You call or email</h3><p>You tell me what's going on. I tell you honestly whether I think OT would help and whether I'm the right person. No cost, no obligation, and no form to fill in first.</p></li>
+<li><span class="n" aria-hidden="true">2</span><h3>We book a first session</h3><p>In your home, or over video, at a time that fits your family's day. I'll send a short intake form beforehand.</p></li>
 <li><span class="n" aria-hidden="true">3</span><h3>The first session</h3><p>Mostly understanding: what you need, what your child's day looks like, and setting goals together.</p></li>
 <li><span class="n" aria-hidden="true">4</span><h3>We decide the rhythm together</h3><p>Weekly, every other week, or as needed. There's no package, and you can stop whenever it stops being useful.</p></li>
 </ol>

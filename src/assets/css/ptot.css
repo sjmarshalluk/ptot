@@ -566,6 +566,9 @@ footer a:hover{color:var(--yellow);border-color:var(--yellow)}
 .fcontact a{border-bottom-color:rgba(var(--on-surface-rgb),.3)}
 .fcontact .k{display:block;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--on-surface-muted)}
 .fcontact li{margin-bottom:var(--s3)}
+/* Second line under the service area: remote reaches further than she drives,
+   which is a qualifier rather than a fact of equal weight. */
+.fcontact .fine-note{color:var(--on-surface-muted);font-size:var(--fs-sm)}
 footer .base{display:flex;justify-content:space-between;gap:var(--s3);margin-top:var(--s7);padding-top:var(--s4);border-top:1px solid rgba(var(--on-surface-rgb),.16);font-size:13px;color:var(--on-surface-muted);flex-wrap:wrap}
 footer .todo-inline{color:var(--on-surface-muted)}
 

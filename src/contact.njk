@@ -1,9 +1,9 @@
 ---
 layout: base.njk
 permalink: /contact/
-title: "Contact & Book an Intro Call — Pediatric OT, Port Townsend"
+title: "Contact — Pediatric Occupational Therapy, Port Townsend"
 breadcrumb: "Contact"
-description: "Book a free 15-minute intro call with Julia Comstock-Ross, pediatric occupational therapist in Port Townsend and East Jefferson County. No referral or diagnosis needed."
+description: "Call or email Julia Comstock-Ross, pediatric occupational therapist in Port Townsend and East Jefferson County. In-home, community and remote sessions. No referral or diagnosis needed."
 hideStickyCta: true
 ---
 
@@ -13,7 +13,7 @@ hideStickyCta: true
 {{ shape('blob', 'blue', 'md', 'gutter-r') }}
 <div class="container">
 <h1>Start with a conversation.</h1>
-<p class="lede">A free {{ site.introCall.minutes }}-minute call, no obligation. You tell me what's going on, and I'll tell you honestly whether I think I can help.</p>
+<p class="lede">Phone or email me directly — there's no booking system to work through. You tell me what's going on, and I'll tell you honestly whether I think I can help.</p>
 </div>
 </div>
 
@@ -23,13 +23,13 @@ hideStickyCta: true
 <div class="contact-grid">
 
 <div class="contact-card">
-<h3>Book a call directly</h3>
-{% if site.bookingUrl %}
-<p>Through my client portal. Choose <b>I'm a New Client</b> and tell me a little about what you're looking for — I'll be in touch to fix a time.</p>
-<a class="btn" href="{{ site.bookingUrl }}">Request an appointment</a>
+<h3>Phone</h3>
+{% if site.phoneHref %}
+<p><a class="lnk" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
 {% else %}
-<p class="todo-inline">[Scheduling link to be added — Calendly, Acuity, Jane or SimplePractice. Until then, families use the form or the direct details below.]</p>
+<p class="todo-inline">{{ site.phone }}</p>
 {% endif %}
+<p class="small-note">If I don't pick up I'm in a session — leave a message and I'll call back.</p>
 </div>
 
 <div class="contact-card">
@@ -43,19 +43,20 @@ hideStickyCta: true
 </div>
 
 <div class="contact-card">
-<h3>Phone</h3>
-{% if site.phoneHref %}
-<p><a class="lnk" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></p>
-{% else %}
-<p class="todo-inline">{{ site.phone }}</p>
-{% endif %}
-<p class="small-note">If I don't pick up I'm in a session — leave a message and I'll call back.</p>
+<h3>What happens next</h3>
+<p>We talk. It costs nothing, it takes as long as it takes, and there's nothing to fill in first.</p>
+<p class="small-note">If I don't think occupational therapy is what your child needs, or that I'm the right person for it, I'll say so and point you somewhere better.</p>
+</div>
+
 </div>
 
 </div>
 </div>
 </section>
 
+{# Hidden behind site.contactFormEnabled rather than deleted — Julia may want
+   it back once there is an endpoint behind it. See the note in site.json. #}
+{% if site.contactFormEnabled %}
 <section class="sec sec-alt tint-blue" aria-labelledby="form-h">
 <div class="container split">
 <div class="split-head">
@@ -115,21 +116,24 @@ hideStickyCta: true
 </div>
 
 <button class="btn" type="submit">Send message</button>
-<p class="f-privacy">What you send comes to me and nobody else, and I'll reply within <span class="todo-inline">[response time]</span>. For anything you'd rather send securely, use <a class="lnk" href="{{ site.bookingUrl }}">the client portal</a> or just call.</p>
+<p class="f-privacy">What you send comes to me and nobody else, and I'll reply within <span class="todo-inline">[response time]</span>. For anything you'd rather send securely, use <a class="lnk" href="{{ site.clientPortalUrl }}">the client portal</a> or just call.</p>
 </form>
 </div>
 </div>
 </section>
+{% endif %}
 
 <section class="sec sec-shaped" aria-labelledby="area-h">
 {{ shape('blob', 'green', 'lg', 'gutter-r', true) }}
 <div class="container narrow">
 <h2 id="area-h">Where I work.</h2>
-<p>Sessions happen in your home or out in the community across {{ site.baseTown }} and {{ site.region }}, {{ site.stateFull }}. There's no clinic to visit.</p>
+<p>In-person sessions happen in your home or out in the community across {{ site.baseTown }} and {{ site.region }}, {{ site.stateFull }}. There's no clinic to visit.</p>
 <ul class="town-list">
 {% for town in site.serviceArea %}<li>{{ town }}</li>{% endfor %}
 </ul>
-<p class="small-note">Just outside this? Ask anyway — it's often workable. <a class="lnk" href="/in-home-ot/">More about how in-home sessions work →</a></p>
+<p class="small-note">Just outside this? Ask anyway — it's often workable.</p>
+
+<p class="mt"><b>Remote sessions</b> reach further: anywhere on the {{ site.remoteArea }}. Same work, same rate, over video instead of in person. <a class="lnk" href="/in-home-ot/#remote">How remote sessions work →</a></p>
 
 <div class="note-block mt">
 <h3>If you're a provider or a school</h3>

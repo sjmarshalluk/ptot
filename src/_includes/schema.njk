@@ -2,6 +2,13 @@
   JSON-LD. Deliberately omits streetAddress: this is a service-area practice whose
   address is hidden on its Google Business Profile, and publishing one here would
   contradict that signal. areaServed carries the location instead.
+
+  The top-level areaServed lists ONLY the towns she drives to, because it has to
+  stay in step with the Google Business Profile — conflicting location signals
+  reduce confidence in the listing. Remote sessions reach much further, so they
+  are declared separately, as a Service with its own wider areaServed and an
+  availableChannel. Do not merge the two: widening areaServed to cover the remote
+  catchment is exactly the desync this file exists to avoid.
 #}
 <script type="application/ld+json">
 {
@@ -11,7 +18,7 @@
       "@type": "MedicalBusiness",
       "@id": "{{ site.url }}#practice",
       "name": "{{ site.businessName }}",
-      "description": "Pediatric occupational therapy in {{ site.baseTown }} and {{ site.region }}, {{ site.stateFull }}. In-home and community-based sessions for children and their families.",
+      "description": "Pediatric occupational therapy in {{ site.baseTown }} and {{ site.region }}, {{ site.stateFull }}. In-home and community-based sessions for children and their families, and remote (telehealth) sessions across the {{ site.remoteArea }}.",
       "url": "{{ site.url }}",
       {% if site.phoneHref %}"telephone": "{{ site.phoneHref }}",{% endif %}
       {% if '[' not in site.email %}"email": "{{ site.email }}",{% endif %}
@@ -23,6 +30,23 @@
         {% endfor %}
       ],
       "provider": { "@id": "{{ site.url }}#julia" },
+      "availableService": {
+        "@type": "Service",
+        "@id": "{{ site.url }}#remote",
+        "name": "Remote pediatric occupational therapy",
+        "serviceType": "Telehealth",
+        "description": "Occupational therapy sessions for children, and parent and family consulting, delivered by video.",
+        "provider": { "@id": "{{ site.url }}#julia" },
+        "areaServed": [
+          {% for county in site.remoteCounties %}{ "@type": "AdministrativeArea", "name": "{{ county }} County", "addressRegion": "{{ site.state }}" }{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "name": "Video session",
+          "serviceUrl": "{{ '/in-home-ot/#remote' | absolute(site.url) }}"
+        }
+      },
       "makesOffer": [
         {% for svc in site.services %}{
           "@type": "Offer",

@@ -10,7 +10,7 @@
 
 <div class="fintro">
 <p class="fname">{{ site.businessName }}</p>
-<p class="frole">Pediatric occupational therapy, in your home and out in the community.</p>
+<p class="frole">Pediatric occupational therapy, in your home, out in the community, and remotely by video.</p>
 </div>
 
 <div class="fcols">
@@ -27,7 +27,10 @@
 <ul class="fcontact">
 <li><span class="k">Email</span> {% if '[' in site.email %}<span class="todo-inline">{{ site.email }}</span>{% else %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</li>
 <li><span class="k">Phone</span> {% if site.phoneHref %}<a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>{% else %}<span class="todo-inline">{{ site.phone }}</span>{% endif %}</li>
-<li><span class="k">Area</span> {{ site.baseTown }} &amp; {{ site.region }}, {{ site.state }}</li>
+<li><span class="k">Area</span> {{ site.baseTown }} &amp; {{ site.region }}, {{ site.state }}<br><span class="fine-note">Remote across the {{ site.remoteArea }}</span></li>
+{# Existing clients only — paperwork and billing. Deliberately not a booking
+   link and deliberately not a CTA: new families phone or email. #}
+{% if site.clientPortalUrl %}<li><span class="k">Existing client</span> <a href="{{ site.clientPortalUrl }}">Client portal &rarr;</a></li>{% endif %}
 </ul>
 </div>
 </div>

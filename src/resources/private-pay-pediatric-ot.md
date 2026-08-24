@@ -29,7 +29,7 @@ My rate is $150 an hour. Here's what that structure actually removes:
 
 **Goals that aren't shaped by billing.** This is the one that matters most to me and is hardest to see from outside. When therapy is billed to insurance, goals must be justifiable as medically necessary and demonstrable as progress against them. That pushes work toward what's measurable and away from what's meaningful. "Can sit with the family through dinner" is harder to code than a fine motor score, and it's usually the thing the family actually wants.
 
-**Therapy where the problem is.** Many plans cover clinic-based therapy well and in-home therapy poorly or not at all. Since [working in the home](/in-home-ot/) is the core of how I practice, private pay is partly what makes that possible.
+**Therapy where the problem is.** Many plans cover clinic-based therapy well and in-home therapy poorly or not at all. Since [working in the home](/in-home-ot/) is the core of how I practice — in person, or over video into the same kitchen — private pay is partly what makes that possible.
 
 **No forced discharge.** Insurance-billed therapy often ends when a child stops demonstrating measurable progress, even if they still benefit from support. Here, therapy ends when you and I agree it should.
 
@@ -84,4 +84,4 @@ Plenty of families do both, at different times.
 
 Private pay buys speed, flexibility, and therapy shaped by what your family actually needs rather than by what an insurer will authorize. It costs money that insurance-billed therapy wouldn't.
 
-For some families that's clearly worth it. For others it clearly isn't, and the right answer is an in-network clinic and a waitlist. The [free intro call](/contact/) exists so you can work out which one you are before spending anything — and I'll tell you if I think you'd be better served elsewhere.
+For some families that's clearly worth it. For others it clearly isn't, and the right answer is an in-network clinic and a waitlist. [Talking to me](/contact/) costs nothing precisely so you can work out which one you are before spending anything — and I'll tell you if I think you'd be better served elsewhere.
