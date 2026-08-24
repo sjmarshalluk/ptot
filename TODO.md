@@ -15,7 +15,7 @@ updates every page, the JSON-LD, the sitemap and the footer at once.
 
 | # | What's needed | Where it goes | Why it blocks |
 |---|---|---|---|
-| 1 | **Deploy, and verify the 301 actually fires** | `vercel.json` (written, untested) | The redirect config exists but has never run. After the first deploy, confirm `curl -sI https://www.porttownsendot.com/what-to-expect/` returns `301` with a `location:` of `/in-home-ot/` — not `200`. A meta-refresh stub still ships as a fallback, so a broken redirect will look fine in a browser and silently fail to pass ranking authority. |
+| 1 | **Deploy, and verify the 301 actually fires** | `vercel.json` | The redirect config exists but has never run. After the first deploy, confirm `curl -sI https://www.porttownsendot.com/what-to-expect/` returns `301` with a `location:` of `/in-home-ot/` — not `200`. A meta-refresh stub still ships as a fallback, so a broken redirect will look fine in a browser and silently fail to pass ranking authority. |
 | 2 | **Point the bare domain at the www one** | DNS + Vercel domain settings | `site.url` is `https://www.porttownsendot.com` and every canonical tag now says so. `porttownsendot.com` must **301** to it, not merely resolve — two live forms compete with each other. The business card prints the bare domain, so this redirect is load-bearing in print too. |
 
 ### Resolved 2026-08-24
@@ -142,6 +142,16 @@ schema here deliberately publishes no street address.
   write reports?") was changed to match — the two must not drift apart again.
 - **Siblings and pets are a judgement call, not a blanket yes.** Stated that way in the
   practical-things list on `/in-home-ot/` and in the FAQ on the same page.
+- **`vercel.json` cannot carry comments.** Vercel validates it against
+  `https://openapi.vercel.sh/vercel.json` with `additionalProperties: false`, at the top level
+  *and* inside each redirect object. A `"//"` key — the usual JSON comment trick — fails the
+  whole deploy with "should NOT have additional property `//`", before the build runs, in 0ms
+  and with no build log. Vercel then keeps serving the previous deployment, so the site looks
+  fine and simply doesn't update. That is exactly what happened on 24 Aug. Keep explanations
+  here, not in that file.
+- **`cleanUrls` is deliberately not set.** Eleventy already emits directory URLs
+  (`/about/index.html` served at `/about/`), and combining `cleanUrls` with `trailingSlash`
+  can produce a redirect loop.
 - **There is no bookable intro call (Aug 2026).** Julia doesn't want families booking a
   15-minute slot; she wants them to phone or email. Every CTA now reads **"Get in touch"** and
   goes to `/contact/`. A free first conversation still happens — it just has no fixed length
