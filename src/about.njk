@@ -20,9 +20,14 @@ description: "Julia Comstock-Ross, pediatric occupational therapist in Port Town
 <div class="container about">
 <div class="portrait">
 {{ shape('diamond', 'yellow', 'sm', 'tr') }}
-<div class="img-todo" role="img" aria-label="Portrait of Julia Comstock-Ross — photo to be supplied">
-<span>Portrait of Julia<small>Photo needed — see TODO.md</small></span>
-</div>
+<picture>
+<source type="image/webp" srcset="/assets/img/julia-480.webp 480w, /assets/img/julia-960.webp 960w" sizes="(max-width:900px) 100vw, 480px">
+<img class="portrait-img" src="/assets/img/julia-480.jpg"
+     srcset="/assets/img/julia-480.jpg 480w, /assets/img/julia-960.jpg 960w"
+     sizes="(max-width:900px) 100vw, 480px"
+     width="480" height="600" decoding="async"
+     alt="Julia Comstock-Ross, smiling, standing against a sunlit brick wall">
+</picture>
 </div>
 <div class="bio">
 <h2 id="bio-h">A short version.</h2>

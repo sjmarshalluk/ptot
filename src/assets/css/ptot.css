@@ -465,9 +465,12 @@ h2{font-size:var(--fs-h2);letter-spacing:-.018em}
 .about p{margin-bottom:var(--s3);max-width:var(--measure)}
 /* Julia speaking in the first person — the softest roundness on the site. */
 .about .bio{font-variation-settings:var(--rond-soft)}
-.img-todo{position:relative;z-index:1;border:2px dashed var(--hair-dashed);border-radius:var(--radius-lg);background:var(--card);aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:var(--s4)}
-.img-todo span{font-weight:600;font-size:var(--fs-sm);color:var(--muted)}
-.img-todo small{display:block;margin-top:var(--s1);font-weight:400;font-size:13px;font-style:italic}
+/* The real portrait. Keeps the 4/5 box and the radius the dashed placeholder
+   held, so the yellow diamond tucked behind its top-right corner still lands
+   in the same place. */
+.portrait-img{position:relative;z-index:1;display:block;width:100%;height:auto;
+  aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);background:var(--card)}
+
 .tags{margin-top:var(--s5)}
 .tags .lbl{margin-bottom:var(--s2)}
 .tags ul{list-style:none;display:flex;flex-wrap:wrap;gap:var(--s1)}

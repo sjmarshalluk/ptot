@@ -55,13 +55,12 @@ Verified against production on 24 Aug 2026: all 8 pages 200; bare domain 308s to
 
 ## Important — the site works without these, but is much weaker
 
-- **Portrait photograph of Julia.** The highest-value single asset on the site. A practice
-  where a stranger comes into your home and works with your child, showing no face, is the
-  worst thing a competitor site in this space does (Blooming Pediatric Therapy) — don't repeat it.
-  Drop it at `src/assets/img/` and replace the `.img-todo` block in `src/index.njk` and
-  `src/about.njk` with a real `<img>` and descriptive alt text. Give it
-  `border-radius: var(--radius-lg)` so it matches the shape the placeholder holds — a
-  yellow diamond is tucked behind its top-left corner and expects a rounded photo.
+- ~~**Portrait photograph of Julia.**~~ **Done 24 Aug 2026.** Live on `/` and `/about/` as a
+  `<picture>` with WebP + JPEG at 480w/960w. Source was a 6000×4000 5MB camera JPEG; cropped
+  4:5 to match the slot, graded (brick desaturated so it stops competing with the brand
+  colours, shadows lifted so hair and clothing keep texture), and EXIF stripped. Largest
+  asset served is 124KB. Graded alternatives and the grading script are in the session
+  scratchpad if the look ever needs revisiting — swapping is a filename change.
 - **Three to five in-context photographs** — a session in a family's living room, materials
   she brings, a community setting. No stock imagery; it reads as false immediately.
 - **Share image** (`site.json` → `ogImage`) — 1200×630 PNG. Until it's set, the Open Graph
