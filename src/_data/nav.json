@@ -14,7 +14,6 @@
   "footerMore": [
     { "url": "/about/", "label": "About Julia" },
     { "url": "/for-providers/", "label": "For providers & schools" },
-    { "url": "/resources/", "label": "Resources for families" },
     { "url": "/contact/", "label": "Contact" }
   ]
 }

@@ -32,12 +32,12 @@
 
   "availability": {
     "accepting": true,
-    "waitTime": "[current wait time]",
+    "waitTime": "two weeks",
     "updated": "2026-08"
   },
 
   "ages": {
-    "from": "birth",
+    "from": "Birth",
     "to": "12",
     "toExceptions": "Older children up to 18 by arrangement — ask.",
     "specialty": "birth to three"
