@@ -3,16 +3,18 @@
  *
  *   idle    the outline itself undulates on a few low harmonics (periods of
  *           30–60s) over a slow drift and spin, so nothing ever repeats
- *   cursor  each shape is a soft body: press into one and the surface dents
- *           inward under the cursor while the body springs away, picking up
- *           some of the cursor's momentum and a little spin if you catch it
- *           off-centre. Let go and it wobbles back.
+ *   cursor  touch a shape and it eases into a small, fixed lean away from
+ *           the cursor — a plain ease toward a constant offset, not a
+ *           spring, so it settles quickly with no overshoot. hero-eyes.js
+ *           handles "noticing" the cursor now; this is just a little body
+ *           language alongside it.
  *   scroll  the shapes accelerate outward off the canvas, clearing the view
  *           by the time the hero is half gone
  *
  * Each path is sampled once into points; every frame those points are
  * displaced and re-emitted as a smooth path (sharp corners are detected and
- * kept sharp). Body motion stays on the compositor as a transform. Respects
+ * kept sharp) — the idle undulation only, the cursor no longer deforms it.
+ * Body motion stays on the compositor as a transform. Respects
  * prefers-reduced-motion, and switches off below the desktop breakpoint.
  */
 (function () {
@@ -44,24 +46,13 @@
   var SPIN        = 7;      // idle rotation, deg
 
   var CONTACT_PAD = 8;      // px outside the outline that still counts as touching
-  var DENT_RADIUS = 120;    // px — how wide the dent spreads
-  // The eyes now carry "noticing you" — the body only needs a small lean, not
-  // the old squish-and-shove. DENT_MAX/BODY_MAX are cut roughly 6-8x from
-  // their pre-eyes values so the surface barely presses in and the shape
-  // shifts a few px rather than shoving up to 90px away.
-  var DENT_MAX    = 5;      // px — deepest the surface can be pressed in
-  var RIM         = 0.15;   // outward bulge around the dent (volume-ish)
-  var DENT_K      = 80;     // dent spring — slow and thick, one soft rebound
-  var DENT_C      = 9;
-  var BODY_GIVE   = 0.62;   // share of the penetration the whole body gives way
-  var BODY_K      = 14;     // body spring — very soft, takes ~2s to settle
-  var BODY_C      = 6.7;
-  var BODY_MAX    = 12;     // px
-  var ENTRAIN     = 0.16;   // how much of the cursor's motion drags the body
-  var TORQUE      = 13;     // spin from an off-centre shove
-  var SPIN_K      = 30;
-  var SPIN_C      = 7;
-  var SPIN_MAX    = 3;      // deg
+  // The eyes carry "noticing you" now, so the body no longer squishes and
+  // shoves away — it just eases to a small, fixed lean and back. A plain
+  // ease toward a constant offset, not a spring: sudden and definite,
+  // nothing to overshoot or bounce.
+  var LEAN_MAX    = 10;     // px — how far the shape leans
+  var LEAN_ROT    = 3.5;    // deg
+  var LEAN_SPEED  = 8;      // 1/s — ease rate toward the lean target
 
   var SCROLL_X    = 280;    // outward drift at full scroll, px
   var SCROLL_Y    = 150;
@@ -141,10 +132,8 @@
       ox: 0, oy: 0, hw: 0, hh: 0, scale: 1, ux: 0, uy: 0,
       // live state
       px: new Float64Array(n), py: new Float64Array(n),
-      bxo: 0, byo: 0, bvx: 0, bvy: 0,          // body offset + velocity, px
-      dent: 0, dentV: 0, dcx: 0, dcy: 0,       // dent depth (px) + contact point
-      dnx: 0, dny: 0,                          // dent direction, local
-      spin: 0, spinV: 0,
+      bxo: 0, byo: 0,                          // body lean offset, px
+      spin: 0,
       geomAt: 0
     };
   }
@@ -156,7 +145,7 @@
   }
   if (!shapes.length) return;
 
-  var mx = -1e5, my = -1e5, pmx = 0, pmy = 0, mvx = 0, mvy = 0, mt = 0;
+  var mx = -1e5, my = -1e5;
   var hasPointer = false, enabled = true, running = false, rafId = 0, last = 0;
   var heroL = 0, heroT = 0, heroW = 1, heroH = 1;   // page coords, cached
 
@@ -184,7 +173,7 @@
       s.oy = r.top - hr.top;
       s.hw = r.width / 2; s.hh = r.height / 2;
       s.scale = r.width / s.vbw || 1;       // px per user unit
-      s.reach = Math.max(s.hw, s.hh) + CONTACT_PAD + BODY_MAX +
+      s.reach = Math.max(s.hw, s.hh) + CONTACT_PAD + LEAN_MAX +
                 Math.max(DRIFT_X, DRIFT_Y);
       s.ux = clamp((s.ox + s.hw - hw) / hw, -1.2, 1.2);
       s.uy = clamp((s.oy + s.hh - hh) / hh, -1.2, 1.2);
@@ -211,8 +200,7 @@
 
   function reset() {
     shapes.forEach(function (s) {
-      s.bxo = s.byo = s.bvx = s.bvy = 0;
-      s.dent = s.dentV = s.spin = s.spinV = 0;
+      s.bxo = s.byo = s.spin = 0;
       s.el.style.transform = '';
       s.el.style.opacity = '';
       s.path.setAttribute('d', s.d0);
@@ -250,9 +238,6 @@
     last = now;
     var t = now / 1000;
 
-    // cursor velocity, px/s, decaying when it stops moving
-    if (mt && now - mt > 90) { mvx = mvy = 0; }
-
     var hLeft = heroL - window.pageXOffset;   // cached: no layout read per frame
     var hTop = heroT - window.pageYOffset;
     var prog = clamp(-hTop / (heroH * SCROLL_SPAN), 0, 1);
@@ -285,8 +270,10 @@
 
       if (near) { idle(s, t); fresh = true; }
 
-      /* where is the cursor, in this shape's own user units? */
-      var pen = 0, cux = 0, cuy = 0, dirx = 0, diry = 0;
+      /* is the cursor touching the outline, and from which side? Only the
+         direction is used now — no depth, no dent — so this is a plain
+         contact test, not a penetration measurement. */
+      var touching = false, dirx = 0, diry = 0;
       if (near) {
         var vx = mx - ccx, vy = my - ccy;
         var ca = Math.cos(-rot * RAD), sa = Math.sin(-rot * RAD);
@@ -317,77 +304,29 @@
           var el2 = Math.hypot(ex, ey) || 1;
           if (inside) { dirx = ex / el2; diry = ey / el2; }
           else        { dirx = -ex / el2; diry = -ey / el2; }
-          // penetration: how far past the surface the cursor has pushed
-          pen = inside ? Math.min(dist, DENT_MAX / s.scale)
-                       : (1 - dist / pad) * 2 / s.scale;
-          cux = qx; cuy = qy;
+          touching = true;
         }
       }
 
-      /* dent spring — stiff, lightly damped, so it jiggles back */
-      var dentTarget = pen * s.scale;                 // px
-      s.dentV += (DENT_K * (dentTarget - s.dent) - DENT_C * s.dentV) * dt;
-      s.dent += s.dentV * dt;
-      if (s.dent < 0.01 && dentTarget === 0 && Math.abs(s.dentV) < 0.05) {
-        s.dent = 0; s.dentV = 0;
-      }
-      if (pen > 0) { s.dcx = cux; s.dcy = cuy; s.dnx = dirx; s.dny = diry; }
-
-      /* body spring — soft and slow, plus a nudge from the cursor's own
-         motion and a little torque when the shove lands off-centre */
+      /* lean — a plain ease toward a small, fixed offset, not a spring.
+         Sudden and definite: it moves the same amount every time, settles
+         quickly, and never overshoots or rebounds. */
       var sinr = Math.sin(rot * RAD), cosr = Math.cos(rot * RAD);
-      var tgx = 0, tgy = 0;
-      if (pen > 0) {
+      var tgx = 0, tgy = 0, tgRot = 0;
+      if (touching) {
         // push direction back into viewport space (uniform scale, so a
         // rotation is all that's needed)
         var wx = dirx * cosr - diry * sinr, wy = dirx * sinr + diry * cosr;
-        var give = pen * s.scale * BODY_GIVE;
-        tgx = wx * give + mvx * ENTRAIN;
-        tgy = wy * give + mvy * ENTRAIN;
-        var m = Math.hypot(tgx, tgy);
-        if (m > BODY_MAX) { tgx = tgx / m * BODY_MAX; tgy = tgy / m * BODY_MAX; }
-
-        var rx = (cux - s.cx) / s.rad, ry = (cuy - s.cy) / s.rad;
-        s.spinV += (rx * diry - ry * dirx) * pen * s.scale * TORQUE * dt;
+        tgx = wx * LEAN_MAX; tgy = wy * LEAN_MAX;
+        tgRot = -wx * LEAN_ROT;
       }
-      s.bvx += (BODY_K * (tgx - s.bxo) - BODY_C * s.bvx) * dt;
-      s.bvy += (BODY_K * (tgy - s.byo) - BODY_C * s.bvy) * dt;
-      s.bxo += s.bvx * dt;
-      s.byo += s.bvy * dt;
+      var leanK = 1 - Math.exp(-LEAN_SPEED * dt);
+      s.bxo += (tgx - s.bxo) * leanK;
+      s.byo += (tgy - s.byo) * leanK;
+      s.spin += (tgRot - s.spin) * leanK;
 
-      s.spinV += (SPIN_K * (0 - s.spin) - SPIN_C * s.spinV) * dt;
-      s.spin += s.spinV * dt;
-      if (s.spin < -SPIN_MAX || s.spin > SPIN_MAX) {
-        s.spin = clamp(s.spin, -SPIN_MAX, SPIN_MAX);
-        s.spinV = 0;    // don't bank velocity against the stop
-      }
-
-      /* apply the dent to the sampled outline */
-      var active = s.dent > 0.05;
-      var emit = active || now - s.geomAt > IDLE_GEOM_MS;
+      var emit = now - s.geomAt > IDLE_GEOM_MS;
       if (emit && !fresh) { idle(s, t); fresh = true; }
-
-      if (active) {
-        var depth = s.dent / s.scale;                 // user units
-        var R = DENT_RADIUS / s.scale, R2 = R * R;
-        var dcx = s.dcx, dcy = s.dcy, dnx = s.dnx, dny = s.dny;
-        for (k = 0; k < n; k++) {
-          var gx = px[k] - dcx, gy = py[k] - dcy;
-          var g2 = gx * gx + gy * gy;
-          if (g2 > 4 * R2) continue;
-          var u = Math.sqrt(g2) / R;
-          var w;
-          if (u < 1) { w = 1 - u * u; w = w * w; }    // the dent
-          else {                                       // a soft rim around it
-            var v = (u - 1.5) / 0.5;
-            if (v < -1 || v > 1) continue;
-            v = 1 - v * v;
-            w = -RIM * v * v;
-          }
-          px[k] += dnx * depth * w;
-          py[k] += dny * depth * w;
-        }
-      }
 
       /* emit — an untouched outline doesn't need redrawing every frame */
       if (emit) {
@@ -435,18 +374,11 @@
   /* ---- wiring ------------------------------------------------------ */
   window.addEventListener('pointermove', function (e) {
     if (e.pointerType === 'touch') return;
-    var now = performance.now();
-    if (hasPointer && now > mt) {
-      var d = Math.min((now - mt) / 1000, 0.1);
-      mvx = (e.clientX - pmx) / d;
-      mvy = (e.clientY - pmy) / d;
-    }
-    pmx = mx = e.clientX; pmy = my = e.clientY;
-    mt = now;
+    mx = e.clientX; my = e.clientY;
     hasPointer = true;
   }, { passive: true });
 
-  function dropPointer() { hasPointer = false; mvx = mvy = 0; }
+  function dropPointer() { hasPointer = false; }
   document.addEventListener('pointerleave', dropPointer);
   window.addEventListener('blur', dropPointer);
 
