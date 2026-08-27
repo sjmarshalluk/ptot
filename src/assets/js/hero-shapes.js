@@ -45,19 +45,23 @@
 
   var CONTACT_PAD = 8;      // px outside the outline that still counts as touching
   var DENT_RADIUS = 120;    // px — how wide the dent spreads
-  var DENT_MAX    = 30;     // px — deepest the surface can be pressed in
+  // The eyes now carry "noticing you" — the body only needs a small lean, not
+  // the old squish-and-shove. DENT_MAX/BODY_MAX are cut roughly 6-8x from
+  // their pre-eyes values so the surface barely presses in and the shape
+  // shifts a few px rather than shoving up to 90px away.
+  var DENT_MAX    = 5;      // px — deepest the surface can be pressed in
   var RIM         = 0.15;   // outward bulge around the dent (volume-ish)
   var DENT_K      = 80;     // dent spring — slow and thick, one soft rebound
   var DENT_C      = 9;
   var BODY_GIVE   = 0.62;   // share of the penetration the whole body gives way
   var BODY_K      = 14;     // body spring — very soft, takes ~2s to settle
   var BODY_C      = 6.7;
-  var BODY_MAX    = 90;     // px
+  var BODY_MAX    = 12;     // px
   var ENTRAIN     = 0.16;   // how much of the cursor's motion drags the body
   var TORQUE      = 13;     // spin from an off-centre shove
   var SPIN_K      = 30;
   var SPIN_C      = 7;
-  var SPIN_MAX    = 4;      // deg
+  var SPIN_MAX    = 3;      // deg
 
   var SCROLL_X    = 280;    // outward drift at full scroll, px
   var SCROLL_Y    = 150;
