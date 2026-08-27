@@ -188,6 +188,11 @@ img{max-width:100%;height:auto}
 .shape-gutter-l{top:50%;left:0;translate:-52% -50%}
 .shape-gutter-r{top:50%;right:0;translate:52% -50%}
 .hero .shape{transform-origin:50% 50%;will-change:transform,opacity;backface-visibility:hidden}
+/* Eyes: baked shut in the markup (see shape.njk), opened at runtime by
+   hero-eyes.js. Sclera/pupil take the same surface + ink tokens as the rest
+   of the page rather than new colour, so they read as part of the system. */
+.shape .eye .sclera{fill:var(--card-hi)}
+.shape .eye .pupil{fill:var(--ink)}
 /* Tucked behind the photo's inner corner, into the gap between the two
    columns — anchored to the outer edge it just hung into the page gutter. */
 .portrait .shape{translate:34% -34%}

@@ -16,17 +16,26 @@
     not an edit across four templates.
 #}
 
-{% macro form(name) %}
+{#
+  One pair of eyes, baked shut by default (transform is a live SVG attribute,
+  not CSS, so hero-eyes.js can drive the same attribute at runtime without a
+  specificity fight). cx/cy are duplicated onto data- attributes so the script
+  never has to know a shape's geometry ahead of time — it reads eye centre,
+  sclera radius and pupil radius straight off the markup.
+#}
+{% macro eyeGroup(cx, cy, sr, pr, dx, dy) %}<g class="eye" data-cx="{{ cx }}" data-cy="{{ cy }}" transform="translate({{ cx }} {{ cy }}) scale(1 .001) translate({{ -cx }} {{ -cy }})"><circle class="sclera" cx="{{ cx }}" cy="{{ cy }}" r="{{ sr }}"/><circle class="pupil" cx="{{ cx + dx }}" cy="{{ cy + dy }}" r="{{ pr }}"/></g>{% endmacro %}
+
+{% macro form(name, eyes=false) %}
 {%- if name == 'blob' -%}
-<svg viewBox="0 0 320 300"><path d="M28 96C4 32 96-14 176 8c78 22 148 66 140 140-8 76-90 158-176 148C56 286 6 226 20 160c6-28 12-40 8-64Z"/></svg>
+<svg viewBox="0 0 320 300"><path d="M28 96C4 32 96-14 176 8c78 22 148 66 140 140-8 76-90 158-176 148C56 286 6 226 20 160c6-28 12-40 8-64Z"/>{% if eyes %}{{ eyeGroup(130, 140, 32, 16, -7, -6) }}{{ eyeGroup(194, 140, 32, 16, -7, -6) }}{% endif %}</svg>
 {%- elif name == 'arch' -%}
-<svg viewBox="0 0 300 320"><path d="M156 6c84-6 140 66 140 152s-52 158-136 160S6 232 6 148C6 68 72 12 156 6Z"/></svg>
+<svg viewBox="0 0 300 320"><path d="M156 6c84-6 140 66 140 152s-52 158-136 160S6 232 6 148C6 68 72 12 156 6Z"/>{% if eyes %}{{ eyeGroup(121, 146, 30, 15, -6, -5) }}{{ eyeGroup(180, 146, 30, 15, -6, -5) }}{% endif %}</svg>
 {%- elif name == 'triangle' -%}
 <svg viewBox="0 0 300 300"><path d="M148 14c6 0 10 3 13 9l132 252c5 10-1 21-12 21H16c-11 0-18-11-13-21L135 23c3-6 7-9 13-9Z"/></svg>
 {%- elif name == 'diamond' -%}
 <svg viewBox="0 0 300 300"><path d="M143 10c5-5 12-5 17 0l130 130c5 5 5 12 0 17L160 287c-5 5-12 5-17 0L13 157c-5-5-5-12 0-17Z"/></svg>
 {%- else -%}
-<svg viewBox="0 0 300 300"><path d="M150 4c86 0 146 58 146 140s-64 152-150 152S4 226 4 144 64 4 150 4Z"/></svg>
+<svg viewBox="0 0 300 300"><path d="M150 4c86 0 146 58 146 140s-64 152-150 152S4 226 4 144 64 4 150 4Z"/>{% if eyes %}{{ eyeGroup(120, 140, 30, 15, -6, -5) }}{{ eyeGroup(180, 140, 30, 15, -6, -5) }}{% endif %}</svg>
 {%- endif -%}
 {% endmacro %}
 
@@ -37,7 +46,7 @@
   under the copy — the stylesheet swaps to --shape-soft there rather than
   dropping the shapes and taking the brand off mobile entirely.
 #}
-{% macro shape(name, color, size='lg', anchor='tr', wash=false) %}
-<span class="shape shape-{{ size }} shape-{{ anchor }}" aria-hidden="true"
-      style="--shape-fill:var(--{% if wash %}wash-{% endif %}{{ color }});--shape-soft:var(--wash-{{ color }})">{{ form(name) }}</span>
+{% macro shape(name, color, size='lg', anchor='tr', wash=false, eyes=false) %}
+<span class="shape shape-{{ size }} shape-{{ anchor }}{% if eyes %} has-eyes{% endif %}" aria-hidden="true"
+      style="--shape-fill:var(--{% if wash %}wash-{% endif %}{{ color }});--shape-soft:var(--wash-{{ color }})">{{ form(name, eyes) }}</span>
 {% endmacro %}
